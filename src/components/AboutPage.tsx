@@ -47,17 +47,17 @@ const AboutPage: React.FC = () => {
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % teamData.members.length);
-    setIsAutoPlaying(false);
+    setIsAutoPlaying(true); // Keep auto-playing for infinite loop
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + teamData.members.length) % teamData.members.length);
-    setIsAutoPlaying(false);
+    setIsAutoPlaying(true); // Keep auto-playing for infinite loop
   };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
-    setIsAutoPlaying(false);
+    setIsAutoPlaying(true); // Keep auto-playing for infinite loop
   };
 
   return (
@@ -522,14 +522,20 @@ const AboutPage: React.FC = () => {
                   <div key={index} className="flex-1 h-1 bg-gray-600 rounded-full overflow-hidden">
                     <motion.div 
                       className="h-full bg-white rounded-full"
-                      initial={{ width: 0 }}
+                      key={`progress-${currentSlide}-${index}`} // Force re-render on slide change
                       animate={{ 
                         width: index < currentSlide ? '100%' : 
                                index === currentSlide ? '100%' : '0%'
                       }}
                       transition={{ 
-                        duration: index === currentSlide ? 4 : 0.3,
+                        duration: index === currentSlide && isAutoPlaying ? 4 : 0.3,
                         ease: index === currentSlide ? "linear" : "easeInOut"
+                      }}
+                      onAnimationComplete={() => {
+                        // When current slide's progress completes, move to next slide
+                        if (index === currentSlide && isAutoPlaying) {
+                          setCurrentSlide((prev) => (prev + 1) % teamData.members.length);
+                        }
                       }}
                     />
                   </div>
