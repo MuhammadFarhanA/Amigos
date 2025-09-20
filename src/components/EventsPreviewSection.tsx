@@ -10,8 +10,8 @@ interface EventsPreviewSectionProps {
 }
 
 const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChange }) => {
-  // Get gallery items for preview (max 8)
-  const galleryPreview = eventsData.gallery.slice(0, 8);
+  // Get 2 featured images for gradient preview
+  const featuredImages = eventsData.gallery.slice(0, 2);
 
   return (
     <motion.section 
@@ -21,11 +21,11 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
       transition={{ duration: 0.8 }}
       viewport={{ once: true, margin: "-100px" }}
     >
-      {/* Gradient Background Elements */}
-      <div className="absolute inset-0 overflow-hidden opacity-20">
-        <div className="absolute top-20 -left-20 w-96 h-96 bg-gradient-to-r from-[#1A2A44]/10 to-[#FF4500]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 -right-20 w-80 h-80 bg-gradient-to-l from-[#FF4500]/10 to-[#1A2A44]/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-[#1A2A44]/5 to-[#FF4500]/5 rounded-full blur-2xl" />
+      {/* Enhanced Gradient Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#1A2A44]/5 via-transparent to-[#FF4500]/5" />
+        <div className="absolute top-20 -left-20 w-96 h-96 bg-gradient-to-r from-[#1A2A44]/20 to-[#FF4500]/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 -right-20 w-80 h-80 bg-gradient-to-l from-[#FF4500]/20 to-[#1A2A44]/20 rounded-full blur-3xl animate-pulse" />
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -66,30 +66,67 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
           </motion.p>
         </motion.div>
 
-        {/* Gallery Preview */}
-        <div className="mb-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
-            {galleryPreview.map((item, index) => (
+        {/* Gradient Style Preview */}
+        <div className="mb-12 max-w-4xl mx-auto">
+          <div className="relative">
+            {/* Main Featured Image */}
+            <motion.div 
+              className="relative h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <img 
+                src={featuredImages[0]?.image} 
+                alt="Featured Event"
+                className="w-full h-full object-cover"
+              />
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#1A2A44]/30 via-transparent to-[#FF4500]/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              
+              {/* Content Overlay */}
+              <div className="absolute bottom-8 left-8 right-8 text-white">
+                <motion.h3 
+                  className="text-2xl md:text-3xl font-bold mb-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  viewport={{ once: true }}
+                >
+                  Our Event Moments
+                </motion.h3>
+                <motion.p 
+                  className="text-white/90 text-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  Capturing memories and celebrating success
+                </motion.p>
+              </div>
+            </motion.div>
+
+            {/* Secondary Image (if available) */}
+            {featuredImages[1] && (
               <motion.div 
-                key={item.id} 
-                className="group relative rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.05 }}
+                className="absolute -bottom-6 -right-6 w-48 h-32 md:w-64 md:h-40 rounded-2xl overflow-hidden shadow-xl border-4 border-white"
+                initial={{ opacity: 0, x: 50, y: 50 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.02, y: -8 }}
+                whileHover={{ scale: 1.05, rotate: 2 }}
               >
-                <div className="aspect-[4/3] p-2">
-                  <img 
-                    src={item.image} 
-                    alt={item.title}
-                    className="w-full h-full object-cover rounded-xl"
-                  />
-                </div>
-                {/* Subtle gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A2A44]/0 via-transparent to-transparent group-hover:from-[#1A2A44]/10 transition-all duration-500 rounded-2xl" />
+                <img 
+                  src={featuredImages[1].image} 
+                  alt="Event Highlight"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF4500]/20 to-[#1A2A44]/20" />
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
 

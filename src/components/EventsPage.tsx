@@ -82,8 +82,122 @@ const EventsPage: React.FC = () => {
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Modern Gallery Grid */}
-          <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
+          {/* Animated Columns Gallery */}
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {/* Column 1 */}
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {eventsData.gallery.filter((_, index) => index % 4 === 0).map((item, index) => (
+                <motion.div 
+                  key={item.id} 
+                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4 + (index * 0.1) }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                >
+                  <div className="relative bg-white p-3">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-auto object-cover rounded-xl"
+                    />
+                    <div className="absolute inset-3 bg-gradient-to-t from-[#1A2A44]/0 via-transparent to-transparent group-hover:from-[#1A2A44]/10 transition-all duration-500 rounded-xl pointer-events-none" />
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Column 2 */}
+            <motion.div 
+              className="space-y-6 mt-12 hidden md:block"
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              {eventsData.gallery.filter((_, index) => index % 4 === 1).map((item, index) => (
+                <motion.div 
+                  key={item.id} 
+                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.6 + (index * 0.1) }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                >
+                  <div className="relative bg-white p-3">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-auto object-cover rounded-xl"
+                    />
+                    <div className="absolute inset-3 bg-gradient-to-t from-[#FF4500]/0 via-transparent to-transparent group-hover:from-[#FF4500]/10 transition-all duration-500 rounded-xl pointer-events-none" />
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Column 3 */}
+            <motion.div 
+              className="space-y-6 mt-6 hidden md:block"
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              {eventsData.gallery.filter((_, index) => index % 4 === 2).map((item, index) => (
+                <motion.div 
+                  key={item.id} 
+                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.8 + (index * 0.1) }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                >
+                  <div className="relative bg-white p-3">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-auto object-cover rounded-xl"
+                    />
+                    <div className="absolute inset-3 bg-gradient-to-t from-[#1A2A44]/0 via-transparent to-transparent group-hover:from-[#1A2A44]/10 transition-all duration-500 rounded-xl pointer-events-none" />
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Column 4 */}
+            <motion.div 
+              className="space-y-6 mt-20 hidden lg:block"
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              {eventsData.gallery.filter((_, index) => index % 4 === 3).map((item, index) => (
+                <motion.div 
+                  key={item.id} 
+                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 1.0 + (index * 0.1) }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                >
+                  <div className="relative bg-white p-3">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-auto object-cover rounded-xl"
+                    />
+                    <div className="absolute inset-3 bg-gradient-to-t from-[#FF4500]/0 via-transparent to-transparent group-hover:from-[#FF4500]/10 transition-all duration-500 rounded-xl pointer-events-none" />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </motion.section>
             {eventsData.gallery.map((item, index) => (
               <motion.div 
                 key={item.id} 
