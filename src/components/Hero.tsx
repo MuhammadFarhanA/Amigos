@@ -65,13 +65,20 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
   }, [hasExited]);
 
   useEffect(() => {
-    // Lock scroll initially only if hero is visible and hasn't exited (desktop only)
-    if (isVisible && !hasExited && window.innerWidth >= 1024) {
+    // Lock scroll initially only if hero is visible and hasn't exited AND on desktop
+    if (isVisible && !hasExited && typeof window !== 'undefined' && window.innerWidth >= 1024) {
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
       document.body.style.top = '0';
       document.body.style.left = '0';
       document.body.style.right = '0';
+    } else {
+      // Ensure mobile can always scroll
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.top = 'unset';
+      document.body.style.left = 'unset';
+      document.body.style.right = 'unset';
     }
     
     return () => {
@@ -86,7 +93,7 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      if (isVisible && !isTransitioning && window.innerWidth >= 1024) {
+      if (isVisible && !isTransitioning && typeof window !== 'undefined' && window.innerWidth >= 1024) {
         e.preventDefault();
         
         if (e.deltaY > 0) { // Scrolling down
@@ -101,13 +108,15 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (isVisible && !isTransitioning && window.innerWidth >= 1024) {
+      // Never prevent touch move on mobile - only prevent on desktop if needed
+      if (isVisible && !isTransitioning && typeof window !== 'undefined' && window.innerWidth >= 1024) {
         e.preventDefault();
       }
     };
 
     const handleTouchStart = (e: TouchEvent) => {
-      if (isVisible && !isTransitioning && window.innerWidth >= 1024) {
+      // Only handle touch events for desktop hero exit
+      if (isVisible && !isTransitioning && typeof window !== 'undefined' && window.innerWidth >= 1024) {
         const touch = e.touches[0];
         const startY = touch.clientY;
         
@@ -131,7 +140,7 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isVisible && !isTransitioning && window.innerWidth >= 1024) {
+      if (isVisible && !isTransitioning && typeof window !== 'undefined' && window.innerWidth >= 1024) {
         if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
           e.preventDefault();
           setScrollAttempts(prev => prev + 1);
