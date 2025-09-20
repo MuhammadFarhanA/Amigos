@@ -47,17 +47,23 @@ const AboutPage: React.FC = () => {
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % teamData.members.length);
-    setIsAutoPlaying(true); // Keep auto-playing for infinite loop
+    setIsAutoPlaying(false);
+    // Resume auto-play after a short delay
+    setTimeout(() => setIsAutoPlaying(true), 100);
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + teamData.members.length) % teamData.members.length);
-    setIsAutoPlaying(true); // Keep auto-playing for infinite loop
+    setIsAutoPlaying(false);
+    // Resume auto-play after a short delay
+    setTimeout(() => setIsAutoPlaying(true), 100);
   };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
-    setIsAutoPlaying(true); // Keep auto-playing for infinite loop
+    setIsAutoPlaying(false);
+    // Resume auto-play after a short delay
+    setTimeout(() => setIsAutoPlaying(true), 100);
   };
 
   return (
@@ -522,20 +528,14 @@ const AboutPage: React.FC = () => {
                   <div key={index} className="flex-1 h-1 bg-gray-600 rounded-full overflow-hidden">
                     <motion.div 
                       className="h-full bg-white rounded-full"
-                      key={`progress-${currentSlide}-${index}`} // Force re-render on slide change
                       animate={{ 
                         width: index < currentSlide ? '100%' : 
-                               index === currentSlide ? '100%' : '0%'
+                               index === currentSlide && isAutoPlaying ? '100%' : 
+                               index === currentSlide ? '0%' : '0%'
                       }}
                       transition={{ 
-                        duration: index === currentSlide && isAutoPlaying ? 4 : 0.3,
+                        duration: index === currentSlide && isAutoPlaying ? 4 : 0,
                         ease: index === currentSlide ? "linear" : "easeInOut"
-                      }}
-                      onAnimationComplete={() => {
-                        // When current slide's progress completes, move to next slide
-                        if (index === currentSlide && isAutoPlaying) {
-                          setCurrentSlide((prev) => (prev + 1) % teamData.members.length);
-                        }
                       }}
                     />
                   </div>
@@ -544,40 +544,14 @@ const AboutPage: React.FC = () => {
               
               {/* Image Container */}
               <div className="relative aspect-[4/5] overflow-hidden bg-gray-100">
-                {/* Loading Animation */}
-                <motion.div 
-                  className="absolute inset-0 flex items-center justify-center bg-gray-100"
-                  initial={{ opacity: 1 }}
-                  animate={{ opacity: 0 }}
-                  transition={{ duration: 0.5, delay: 0.8 }}
-                >
-                  <div className="flex space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        className="w-2 h-2 bg-gray-400 rounded-full"
-                        animate={{
-                          scale: [1, 1.2, 1],
-                          opacity: [0.5, 1, 0.5]
-                        }}
-                        transition={{
-                          duration: 1,
-                          repeat: Infinity,
-                          delay: i * 0.1
-                        }}
-                      />
-                    ))}
-                  </div>
-                </motion.div>
-                
                 <motion.img
                   key={currentSlide}
                   src={teamData.members[currentSlide].image}
                   alt={teamData.members[currentSlide].name}
-                  className="w-full h-full object-contain relative z-10"
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
+                  className="w-full h-full object-contain"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
                 />
                 
                 {/* Navigation Arrows */}
