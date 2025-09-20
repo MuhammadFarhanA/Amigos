@@ -6,12 +6,14 @@ import WhyUsSection from './components/WhyUsSection';
 import CTASection from './components/CTASection';
 import ContactSection from './components/ContactSection';
 import TestimonialsSection from './components/TestimonialsSection';
+import EventsPreviewSection from './components/EventsPreviewSection';
 import Footer from './components/Footer';
 import StudyVisaPage from './components/StudyVisaPage';
 import TouristVisaPage from './components/TouristVisaPage';
 import ProfessionalCoursesPage from './components/ProfessionalCoursesPage';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
+import EventsPage from './components/EventsPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -44,6 +46,8 @@ function App() {
         return <AboutPage />;
       case 'contact':
         return <ContactPage />;
+      case 'events':
+        return <EventsPage />;
       default:
         return (
           <div className="relative min-h-screen">
@@ -55,6 +59,7 @@ function App() {
               <ServicesSection onPageChange={handlePageChange} />
               <WhyUsSection onGetConsultation={handleGetConsultation} />
               <TestimonialsSection />
+              <EventsPreviewSection onPageChange={handlePageChange} />
               <CTASection onGetConsultation={handleGetConsultation} />
               <ContactSection onContactPage={() => handlePageChange('contact')} />
             </div>

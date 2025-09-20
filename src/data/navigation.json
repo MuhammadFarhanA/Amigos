@@ -12,6 +12,7 @@
     },
     { "name": "Professional Courses", "key": "courses" },
     { "name": "About", "key": "about" },
+    { "name": "Events", "key": "events" },
     { "name": "Contact", "key": "contact" }
   ]
 }
