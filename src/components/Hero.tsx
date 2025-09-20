@@ -215,7 +215,7 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
 
         {/* Right Side - Image */}
         <motion.div 
-          className="relative bg-gray-100 flex items-center justify-center overflow-hidden"
+          className="relative bg-gray-100 flex items-center justify-center overflow-hidden min-h-0"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -223,7 +223,7 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
           <motion.img
             src={"src/assets/images/hero.jpg"}
             alt="Happy student with books"
-            className="w-full h-full object-cover min-h-0"
+            className="w-full h-full object-cover object-center"
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
             transition={{ duration: 1.2, delay: 0.5 }}
