@@ -201,112 +201,174 @@ const AboutPage: React.FC = () => {
         viewport={{ once: true, margin: "-100px" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-            <div className="grid lg:grid-cols-2">
-              {/* CEO Image Side */}
+          <motion.div 
+            className="bg-gradient-to-br from-[#1A2A44] via-[#2A3A54] to-[#1A2A44] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-10 left-10 w-32 h-32 border border-white/20 rounded-full" />
+              <div className="absolute bottom-10 right-10 w-24 h-24 border border-white/20 rounded-full" />
+              <div className="absolute top-1/2 left-1/2 w-40 h-40 border border-white/10 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
+            </div>
+            
+            <div className="relative z-10">
+              {/* Header */}
               <motion.div 
-                className="relative bg-gradient-to-br from-[#1A2A44] to-[#2A3A54] p-8 lg:p-12 flex items-center justify-center"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <div className="text-center">
-                  <motion.div 
-                    className="relative inline-block mb-6"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <img
-                      src={aboutData.ceo.image}
-                      alt="CEO"
-                      className="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-white shadow-xl"
-                    />
-                    <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-[#FF4500] rounded-full flex items-center justify-center shadow-lg">
-                      <Award className="h-8 w-8 text-white" />
-                    </div>
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    viewport={{ once: true }}
-                  >
-                    <h3 className="text-2xl font-bold text-white mb-2">{aboutData.ceo.name}</h3>
-                    <p className="text-white/80 text-lg mb-2">{aboutData.ceo.credentials}</p>
-                    <p className="text-white/70 text-sm">{aboutData.ceo.experience}</p>
-                    <div className="flex justify-center mt-4">
-                      <div className="flex space-x-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="h-5 w-5 text-[#FF4500] fill-current" />
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-
-              {/* CEO Content Side */}
-              <motion.div 
-                className="p-8 lg:p-12"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="text-center mb-12"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <div className="h-full flex flex-col justify-center">
-                  <motion.h3 
-                    className="text-3xl font-bold text-[#1A2A44] mb-6"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    viewport={{ once: true }}
-                  >
-                    Leadership with Experience
-                  </motion.h3>
-                  
-                  <motion.div 
-                    className="space-y-4 mb-6"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="flex items-start">
-                      <GraduationCap className="h-6 w-6 text-[#FF4500] mr-3 mt-1 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-1">Academic Excellence</h4>
-                        <p className="text-gray-600 text-sm">{aboutData.ceo.credentials}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <Globe className="h-6 w-6 text-[#1A2A44] mr-3 mt-1 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-1">Global Experience</h4>
-                        <p className="text-gray-600 text-sm">{aboutData.ceo.expertise}</p>
-                      </div>
-                    </div>
-                  </motion.div>
+                <motion.div 
+                  className="inline-flex p-4 bg-[#FF4500] rounded-full mb-6"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Award className="h-12 w-12 text-white" />
+                </motion.div>
+                <h3 className="text-3xl md:text-4xl font-bold mb-4">Leadership with Experience</h3>
+                <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">Meet the visionary behind Amigos - combining academic excellence with real-world experience</p>
+              </motion.div>
 
-                  <motion.div 
-                    className="bg-gradient-to-r from-[#FF4500]/5 to-[#1A2A44]/5 p-6 rounded-2xl border-l-4 border-[#FF4500]"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="flex items-center mb-3">
-                      <Quote className="h-6 w-6 text-[#FF4500] mr-2" />
-                      <span className="font-semibold text-[#1A2A44]">CEO Message</span>
+              {/* Content Grid */}
+              <div className="grid md:grid-cols-2 gap-8 mb-12">
+                {/* Education Card */}
+                <motion.div 
+                  className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300"
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5, transition: { duration: 0.3 } }}
+                >
+                  <div className="flex items-center mb-6">
+                    <motion.div 
+                      className="p-3 bg-[#FF4500] rounded-lg mr-4"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <GraduationCap className="h-8 w-8 text-white" />
+                    </motion.div>
+                    <h4 className="text-2xl font-bold text-white">Academic Excellence</h4>
+                  </div>
+                  <div className="space-y-3">
+                    <motion.div 
+                      className="text-white/90 flex items-center text-lg"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.6 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className="w-3 h-3 bg-[#FF4500] rounded-full mr-4 flex-shrink-0" />
+                      {aboutData.ceo.credentials}
+                    </motion.div>
+                    <motion.div 
+                      className="text-white/90 flex items-center text-lg"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.7 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className="w-3 h-3 bg-[#FF4500] rounded-full mr-4 flex-shrink-0" />
+                      {aboutData.ceo.experience}
+                    </motion.div>
+                  </div>
+                </motion.div>
+
+                {/* Experience Card */}
+                <motion.div 
+                  className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300"
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5, transition: { duration: 0.3 } }}
+                >
+                  <div className="flex items-center mb-6">
+                    <motion.div 
+                      className="p-3 bg-white/20 rounded-lg mr-4"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Globe className="h-8 w-8 text-white" />
+                    </motion.div>
+                    <h4 className="text-2xl font-bold text-white">Global Experience</h4>
+                  </div>
+                  <div className="space-y-3">
+                    <motion.div 
+                      className="text-white/90 flex items-center text-lg"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.8 }}
+                      viewport={{ once: true }}
+                    >
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-4 flex-shrink-0" />
+                      Personal study abroad experience
+                    </motion.div>
+                    <motion.div 
+                      className="text-white/90 flex items-center text-lg"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.9 }}
+                      viewport={{ once: true }}
+                    >
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-4 flex-shrink-0" />
+                      Immigration & settlement expertise
+                    </motion.div>
+                    <motion.div 
+                      className="text-white/90 flex items-center text-lg"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 1 }}
+                      viewport={{ once: true }}
+                    >
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-4 flex-shrink-0" />
+                      International career development
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Quote Section */}
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                viewport={{ once: true }}
+              >
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+                  <div className="flex justify-center mb-6">
+                    <motion.div 
+                      className="p-3 bg-[#FF4500] rounded-full"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Quote className="h-8 w-8 text-white" />
+                    </motion.div>
+                  </div>
+                  <blockquote className="text-2xl md:text-3xl text-white/95 mb-6 leading-relaxed italic font-light">
+                    "Having personally navigated the challenges of studying abroad, I understand exactly what students face. That's why we've built Amigos to provide the support I wish I had during my journey."
+                  </blockquote>
+                  <div className="flex justify-center mb-4">
+                    <div className="flex space-x-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-6 w-6 text-[#FF4500] fill-current" />
+                      ))}
                     </div>
-                    <p className="text-gray-700 italic leading-relaxed">
-                      "Having personally navigated the challenges of studying abroad, I understand exactly what students face. That's why we've built Amigos to provide the support I wish I had during my journey."
-                    </p>
-                  </motion.div>
+                  </div>
+                  <p className="text-[#FF4500] font-semibold text-lg">
+                    — {aboutData.ceo.name}
+                  </p>
                 </div>
               </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </motion.section>
 
