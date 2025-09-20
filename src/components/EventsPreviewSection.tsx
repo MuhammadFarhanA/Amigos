@@ -28,7 +28,7 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
         <div className="absolute bottom-20 -right-20 w-80 h-80 bg-gradient-to-l from-[#FF4500]/20 to-[#1A2A44]/20 rounded-full blur-3xl animate-pulse" />
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div 
           className="text-center mb-12"
