@@ -225,7 +225,7 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
             <motion.img
               src={"src/assets/images/hero.jpg"}
               alt="Happy student with books"
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-top"
               initial={{ scale: 1.1 }}
               animate={{ scale: 1 }}
               transition={{ duration: 1.2, delay: 0.5 }}
