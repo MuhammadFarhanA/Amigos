@@ -1,56 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, MapPin, BookOpen, Globe } from 'lucide-react';
+import clientSuccessesData from '../data/clientSuccesses.json';
 
 const TestimonialsSection: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   
-  // Real client success data
-  const clientSuccesses = [
-    { name: "Usama bin Aslam", nationality: "Pakistani", country: "United Kingdom", flag: "🇬🇧", university: "De Montfort University", course: "BA (Hons) Business Management" },
-    { name: "Asad Khan", nationality: "Pakistani", country: "Hungary", flag: "🇭🇺", university: "University of Pecs", course: "MSc Business Analytics" },
-    { name: "Mahroosh Khan", nationality: "Pakistani", country: "United Kingdom", flag: "🇬🇧", university: "Aston University", course: "MSc Data Science" },
-    { name: "Awais Ahmed Khan", nationality: "Pakistani", country: "United Kingdom", flag: "🇬🇧", university: "University of Law", course: "LLB (Hons) Law" },
-    { name: "Danial Ahmed", nationality: "Pakistani", country: "Poland", flag: "🇵🇱", university: "Warsaw University of Technology", course: "BSc Computer Science" },
-    { name: "Muzamil", nationality: "Pakistani", country: "United Kingdom", flag: "🇬🇧", university: "University of Manchester", course: "MSc Management" },
-    { name: "Uzair Randhawa", nationality: "Pakistani", country: "United Kingdom", flag: "🇬🇧", university: "University of Leeds", course: "MSc Advanced Computer Science" },
-    { name: "Madiha Jamil", nationality: "Pakistani", country: "Sweden", flag: "🇸🇪", university: "KTH Royal Institute of Technology", course: "MS Biotechnology" },
-    { name: "Muhammad Nouman", nationality: "Pakistani", country: "Spain", flag: "🇪🇸", university: "IE University", course: "Master in Market Research" },
-    { name: "Osama Ahmed Khan", nationality: "Pakistani", country: "United Kingdom", flag: "🇬🇧", university: "University of Bristol", course: "LLB (Hons) Law" },
-    { name: "Amna", nationality: "Pakistani", country: "United Kingdom", flag: "🇬🇧", university: "University of Glasgow", course: "MSc Data Analytics" },
-    { name: "Rajiv Malhotra", nationality: "Indian", country: "Canada", flag: "🇨🇦", university: "University of Toronto", course: "Master of Engineering" },
-    { name: "Priya Sharma", nationality: "Indian", country: "United Kingdom", flag: "🇬🇧", university: "University of Edinburgh", course: "MSc Artificial Intelligence" },
-    { name: "Amit Patel", nationality: "Indian", country: "United States", flag: "🇺🇸", university: "Northeastern University", course: "MS in Computer Science" },
-    { name: "Sunil Kumar", nationality: "Indian", country: "Australia", flag: "🇦🇺", university: "University of Melbourne", course: "Master of IT" },
-    { name: "Lakshmi Iyer", nationality: "Indian", country: "Germany", flag: "🇩🇪", university: "Technical University of Munich", course: "MSc Robotics" },
-    { name: "Amina Begum", nationality: "Bangladeshi", country: "United Kingdom", flag: "🇬🇧", university: "University of Westminster", course: "MBA" },
-    { name: "Hasan Rahman", nationality: "Bangladeshi", country: "Ireland", flag: "🇮🇪", university: "University College Dublin", course: "MSc Finance" },
-    { name: "Jamil Ahmed", nationality: "Bangladeshi", country: "Malaysia", flag: "🇲🇾", university: "University of Malaya", course: "MSc Data Science" },
-    { name: "Farida Akhtar", nationality: "Bangladeshi", country: "Netherlands", flag: "🇳🇱", university: "University of Amsterdam", course: "LLM International Law" },
-    { name: "Nusrat Jahan", nationality: "Bangladeshi", country: "Italy", flag: "🇮🇹", university: "Politecnico di Milano", course: "MSc Fashion Design" },
-    { name: "Lakshitha Perera", nationality: "Sri Lankan", country: "Australia", flag: "🇦🇺", university: "UNSW Sydney", course: "Master of Cyber Security" },
-    { name: "Dinesh Fernando", nationality: "Sri Lankan", country: "Canada", flag: "🇨🇦", university: "Conestoga College", course: "PG Diploma in Project Management" },
-    { name: "Chaminda Silva", nationality: "Sri Lankan", country: "New Zealand", flag: "🇳🇿", university: "Auckland University of Technology", course: "Master of Applied Finance" },
-    { name: "Anusha Ratnayake", nationality: "Sri Lankan", country: "United Kingdom", flag: "🇬🇧", university: "Coventry University", course: "BEng (Hons) Civil Engineering" },
-    { name: "Priyantha Weerasinghe", nationality: "Sri Lankan", country: "United States", flag: "🇺🇸", university: "University of North Texas", course: "MS in Mechanical Engineering" },
-    { name: "Kofi Mensah", nationality: "Ghanaian", country: "United Kingdom", flag: "🇬🇧", university: "University of Nottingham", course: "MSc Public Health" },
-    { name: "Abena Boateng", nationality: "Ghanaian", country: "Canada", flag: "🇨🇦", university: "Seneca College", course: "PG Diploma in Business Analytics" },
-    { name: "Yaw Appiah", nationality: "Ghanaian", country: "Germany", flag: "🇩🇪", university: "Jacobs University Bremen", course: "BSc Data Engineering" },
-    { name: "Ama Serwaa", nationality: "Ghanaian", country: "United States", flag: "🇺🇸", university: "Purdue University", course: "MS in Agriculture" },
-    { name: "Esi Asante", nationality: "Ghanaian", country: "France", flag: "🇫🇷", university: "INSEAD", course: "MBA" },
-    { name: "Chiamaka Nwosu", nationality: "Nigerian", country: "United Kingdom", flag: "🇬🇧", university: "University of Birmingham", course: "LLM International Commercial Law" },
-    { name: "Obinna Okeke", nationality: "Nigerian", country: "Canada", flag: "🇨🇦", university: "University of Manitoba", course: "MEng Electrical Engineering" },
-    { name: "Adeola Adewale", nationality: "Nigerian", country: "United States", flag: "🇺🇸", university: "Georgia Institute of Technology", course: "MS in Aerospace Engineering" },
-    { name: "Funmilayo Balogun", nationality: "Nigerian", country: "Australia", flag: "🇦🇺", university: "Monash University", course: "Master of Nursing" },
-    { name: "Tunde Okafor", nationality: "Nigerian", country: "Cyprus", flag: "🇨🇾", university: "University of Nicosia", course: "MBBS Medicine" },
-    { name: "Zara Oni", nationality: "Nigerian", country: "United Kingdom", flag: "🇬🇧", university: "University of the Arts London", course: "MA Graphic Design" },
-    { name: "Bilal Abbas", nationality: "Pakistani", country: "Australia", flag: "🇦🇺", university: "Monash University", course: "Master of Cybersecurity" },
-    { name: "Fatima Khan", nationality: "Pakistani", country: "United Kingdom", flag: "🇬🇧", university: "King's College London", course: "LLM International Law" },
-    { name: "Hassan Rizvi", nationality: "Pakistani", country: "United States", flag: "🇺🇸", university: "New York University", course: "MS Financial Engineering" },
-    { name: "Zara Sheikh", nationality: "Pakistani", country: "France", flag: "🇫🇷", university: "ESSEC Business School", course: "Master in Management" },
-    { name: "Omar Farooq", nationality: "Pakistani", country: "Germany", flag: "🇩🇪", university: "TU Berlin", course: "MSc Renewable Energy" },
-    { name: "Sana Ali", nationality: "Pakistani", country: "Netherlands", flag: "🇳🇱", university: "University of Amsterdam", course: "MSc Psychology" }
-  ];
+  // Import client success data
+  const clientSuccesses = clientSuccessesData;
   
   // Triple the array for seamless loop
   const tripleClients = [...clientSuccesses, ...clientSuccesses, ...clientSuccesses];
@@ -162,13 +119,37 @@ const TestimonialsSection: React.FC = () => {
             >
               {/* Prominent Country Header */}
               <motion.div 
-                className="bg-gradient-to-r from-[#1A2A44] to-[#2A3A54] rounded-xl p-4 mb-4 -mx-2 -mt-2"
+                className="bg-gradient-to-r from-[#1A2A44] to-[#2A3A54] rounded-xl p-4 mb-4 -mx-2 -mt-2 relative overflow-hidden"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-2 right-2 w-16 h-16 border border-white/20 rounded-full" />
+                  <div className="absolute bottom-2 left-2 w-12 h-12 border border-white/20 rounded-full" />
+                </div>
+                
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <span className="text-3xl">{client.flag}</span>
+                    <div className="flex items-center space-x-3">
+                      <img 
+                        src={`https://flagcdn.com/w40/${client.flagCode}.png`}
+                        alt={`${client.country} flag`}
+                        className="w-10 h-7 object-cover rounded shadow-md"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const parent = target.parentElement;
+                          if (parent) {
+                            const span = document.createElement('span');
+                            span.textContent = client.flag;
+                            span.className = 'text-3xl';
+                            parent.appendChild(span);
+                          }
+                        }}
+                      />
+                      <span className="text-3xl">{client.flag}</span>
+                    </div>
                     <div>
                       <h4 className="text-white font-bold text-lg">{client.country}</h4>
                       <p className="text-white/80 text-sm">Study Destination</p>
@@ -195,7 +176,7 @@ const TestimonialsSection: React.FC = () => {
 
               {/* University - Highlighted */}
               <motion.div 
-                className="bg-gradient-to-r from-[#FF4500]/10 to-[#FF6B35]/10 rounded-xl p-4 mb-4 border-l-4 border-[#FF4500]"
+                className="bg-gradient-to-r from-[#FF4500]/10 to-[#FF6B35]/10 rounded-xl p-4 mb-4"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
