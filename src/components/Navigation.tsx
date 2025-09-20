@@ -32,7 +32,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 w-[120px] h-[120px]">
             <button
               onClick={() => onPageChange('home')}
               className="text-xl md:text-2xl font-bold text-white hover:text-[#FF4500] transition-colors duration-300 cursor-pointer"
