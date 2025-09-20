@@ -1,110 +1,103 @@
 {
   "title": "Events & Gallery",
   "subtitle": "Celebrating Success Stories & Building Community",
-  "description": "Join us at our events, workshops, and celebrations as we help students achieve their dreams of studying abroad.",
-  "upcomingEvents": [
+  "description": "Explore our gallery of events, workshops, and celebrations as we help students achieve their dreams of studying abroad.",
+  "gallery": [
     {
       "id": 1,
       "title": "Study Abroad Fair 2024",
-      "date": "2024-03-15",
-      "time": "10:00 AM - 6:00 PM",
-      "location": "Lahore Expo Center",
-      "description": "Meet representatives from top universities worldwide and get on-the-spot admissions.",
       "image": "https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      "type": "Fair",
-      "featured": true
+      "category": "Events",
+      "date": "2024-03-15",
+      "description": "Annual study abroad fair with university representatives"
     },
     {
       "id": 2,
-      "title": "IELTS Preparation Workshop",
-      "date": "2024-03-22",
-      "time": "2:00 PM - 5:00 PM",
-      "location": "Amigos Office, Johar Town",
-      "description": "Free IELTS preparation workshop with expert trainers and practice tests.",
+      "title": "IELTS Workshop Session",
       "image": "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      "type": "Workshop",
-      "featured": true
+      "category": "Workshops",
+      "date": "2024-03-22",
+      "description": "Interactive IELTS preparation workshop"
     },
     {
       "id": 3,
       "title": "Visa Success Celebration",
-      "date": "2024-03-30",
-      "time": "4:00 PM - 7:00 PM",
-      "location": "Pearl Continental Hotel, Lahore",
-      "description": "Celebrating our students' visa approvals and sharing success stories.",
       "image": "https://images.pexels.com/photos/1708936/pexels-photo-1708936.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      "type": "Celebration",
-      "featured": true
-    }
-  ],
-  "pastEvents": [
+      "category": "Celebrations",
+      "date": "2024-03-30",
+      "description": "Celebrating student visa approvals"
+    },
     {
       "id": 4,
       "title": "UK Universities Seminar",
-      "date": "2024-02-10",
-      "location": "Avari Hotel, Lahore",
-      "description": "Exclusive seminar with UK university representatives.",
       "image": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      "type": "Seminar",
-      "attendees": 150
+      "category": "Seminars",
+      "date": "2024-02-10",
+      "description": "Exclusive seminar with UK university representatives"
     },
     {
       "id": 5,
       "title": "Student Send-off Party",
-      "date": "2024-01-25",
-      "location": "Amigos Office",
-      "description": "Farewell celebration for students departing to various countries.",
       "image": "https://images.pexels.com/photos/1708936/pexels-photo-1708936.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      "type": "Celebration",
-      "attendees": 80
+      "category": "Celebrations",
+      "date": "2024-01-25",
+      "description": "Farewell celebration for departing students"
     },
     {
       "id": 6,
       "title": "Canada Immigration Webinar",
-      "date": "2024-01-15",
-      "location": "Online",
-      "description": "Comprehensive webinar on Canadian immigration pathways.",
       "image": "https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      "type": "Webinar",
-      "attendees": 200
-    }
-  ],
-  "gallery": [
-    {
-      "id": 1,
-      "title": "Study Fair 2023",
-      "image": "https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      "category": "Events"
+      "category": "Webinars",
+      "date": "2024-01-15",
+      "description": "Comprehensive Canadian immigration webinar"
     },
     {
-      "id": 2,
-      "title": "Student Success Stories",
-      "image": "https://images.pexels.com/photos/1708936/pexels-photo-1708936.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      "category": "Celebrations"
-    },
-    {
-      "id": 3,
-      "title": "Workshop Sessions",
-      "image": "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      "category": "Workshops"
-    },
-    {
-      "id": 4,
-      "title": "University Representatives",
-      "image": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      "category": "Seminars"
-    },
-    {
-      "id": 5,
-      "title": "Team Building",
+      "id": 7,
+      "title": "Team Building Event",
       "image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      "category": "Team"
+      "category": "Team",
+      "date": "2024-01-10",
+      "description": "Annual team building activities"
     },
     {
-      "id": 6,
-      "title": "Office Events",
+      "id": 8,
+      "title": "Office Opening Ceremony",
       "image": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      "category": "Office"
+      "category": "Office",
+      "date": "2023-12-20",
+      "description": "Grand opening of our new office"
+    },
+    {
+      "id": 9,
+      "title": "Student Orientation",
+      "image": "https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      "category": "Events",
+      "date": "2023-12-15",
+      "description": "Pre-departure orientation session"
+    },
+    {
+      "id": 10,
+      "title": "Scholarship Workshop",
+      "image": "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      "category": "Workshops",
+      "date": "2023-12-10",
+      "description": "Workshop on scholarship opportunities"
+    },
+    {
+      "id": 11,
+      "title": "Alumni Meetup",
+      "image": "https://images.pexels.com/photos/1708936/pexels-photo-1708936.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      "category": "Celebrations",
+      "date": "2023-11-25",
+      "description": "Alumni networking event"
+    },
+    {
+      "id": 12,
+      "title": "Australia Education Fair",
+      "image": "https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      "category": "Events",
+      "date": "2023-11-20",
+      "description": "Australian universities showcase"
     }
   ]
 }
