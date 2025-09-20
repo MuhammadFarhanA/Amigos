@@ -1,29 +1,37 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Camera,
-} from 'lucide-react';
+import { Camera } from 'lucide-react';
 import eventsData from '../data/events.json';
 import { openWhatsAppChat, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
 const EventsPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  const categories = ['all', 'Events', 'Workshops', 'Celebrations', 'Seminars', 'Webinars', 'Team', 'Office'];
+  const categories = [
+    'all',
+    'Events',
+    'Workshops',
+    'Celebrations',
+    'Seminars',
+    'Webinars',
+    'Team',
+    'Office',
+  ];
 
-  const filteredGallery = selectedCategory === 'all' 
-    ? eventsData.gallery 
-    : eventsData.gallery.filter(item => item.category === selectedCategory);
+  const filteredGallery =
+    selectedCategory === 'all'
+      ? eventsData.gallery
+      : eventsData.gallery.filter((item) => item.category === selectedCategory);
 
   return (
-    <motion.div 
+    <motion.div
       className="min-h-screen bg-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
       {/* Hero Section */}
-      <motion.div 
+      <motion.div
         className="bg-gradient-to-br from-[#1A2A44] via-[#2A3A54] to-[#1A2A44] py-16 relative overflow-hidden"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -37,7 +45,7 @@ const EventsPage: React.FC = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <motion.div 
+          <motion.div
             className="mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -47,7 +55,7 @@ const EventsPage: React.FC = () => {
               <Camera className="h-12 w-12 text-white" />
             </div>
           </motion.div>
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-5xl font-bold text-white mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,7 +63,7 @@ const EventsPage: React.FC = () => {
           >
             {eventsData.title}
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="text-xl text-white/90 mb-4 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,7 +71,7 @@ const EventsPage: React.FC = () => {
           >
             {eventsData.subtitle}
           </motion.p>
-          <motion.p 
+          <motion.p
             className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -75,147 +83,50 @@ const EventsPage: React.FC = () => {
       </motion.div>
 
       {/* Gallery */}
-      <motion.section 
+      <motion.section
         className="py-16 bg-gradient-to-br from-gray-50 via-white to-blue-50"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Animated Columns Gallery */}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {/* Column 1 */}
-            <motion.div 
-              className="space-y-6"
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {eventsData.gallery.filter((_, index) => index % 4 === 0).map((item, index) => (
-                <motion.div 
-                  key={item.id} 
-                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.4 + (index * 0.1) }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                >
-                  <div className="relative bg-white p-3">
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-full h-auto object-cover rounded-xl"
-                    />
-                    <div className="absolute inset-3 bg-gradient-to-t from-[#1A2A44]/0 via-transparent to-transparent group-hover:from-[#1A2A44]/10 transition-all duration-500 rounded-xl pointer-events-none" />
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Column 2 */}
-            <motion.div 
-              className="space-y-6 mt-12 hidden md:block"
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              {eventsData.gallery.filter((_, index) => index % 4 === 1).map((item, index) => (
-                <motion.div 
-                  key={item.id} 
-                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.6 + (index * 0.1) }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                >
-                  <div className="relative bg-white p-3">
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-full h-auto object-cover rounded-xl"
-                    />
-                    <div className="absolute inset-3 bg-gradient-to-t from-[#FF4500]/0 via-transparent to-transparent group-hover:from-[#FF4500]/10 transition-all duration-500 rounded-xl pointer-events-none" />
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Column 3 */}
-            <motion.div 
-              className="space-y-6 mt-6 hidden md:block"
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              {eventsData.gallery.filter((_, index) => index % 4 === 2).map((item, index) => (
-                <motion.div 
-                  key={item.id} 
-                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.8 + (index * 0.1) }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                >
-                  <div className="relative bg-white p-3">
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-full h-auto object-cover rounded-xl"
-                    />
-                    <div className="absolute inset-3 bg-gradient-to-t from-[#1A2A44]/0 via-transparent to-transparent group-hover:from-[#1A2A44]/10 transition-all duration-500 rounded-xl pointer-events-none" />
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Column 4 */}
-            <motion.div 
-              className="space-y-6 mt-20 hidden lg:block"
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              {eventsData.gallery.filter((_, index) => index % 4 === 3).map((item, index) => (
-                <motion.div 
-                  key={item.id} 
-                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 1.0 + (index * 0.1) }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                >
-                  <div className="relative bg-white p-3">
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-full h-auto object-cover rounded-xl"
-                    />
-                    <div className="absolute inset-3 bg-gradient-to-t from-[#FF4500]/0 via-transparent to-transparent group-hover:from-[#FF4500]/10 transition-all duration-500 rounded-xl pointer-events-none" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.section>
-            {eventsData.gallery.map((item, index) => (
-              <motion.div 
-                key={item.id} 
-                className="group relative break-inside-avoid mb-4 md:mb-6"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: (index % 12) * 0.05 }}
-                viewport={{ once: true }}
+            {[0, 1, 2, 3].map((col) => (
+              <motion.div
+                key={col}
+                className={`space-y-6 ${
+                  col === 1 ? 'mt-12 hidden md:block' : ''
+                } ${col === 2 ? 'mt-6 hidden md:block' : ''} ${
+                  col === 3 ? 'mt-20 hidden lg:block' : ''
+                }`}
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 * (col + 1) }}
               >
-                <div className="relative bg-white rounded-2xl p-3 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
-                  <img 
-                    src={item.image} 
-                    alt={item.title}
-                    className="w-full h-auto object-cover rounded-xl"
-                  />
-                  {/* Subtle gradient overlay */}
-                  <div className="absolute inset-3 bg-gradient-to-t from-[#1A2A44]/0 via-transparent to-transparent group-hover:from-[#1A2A44]/5 transition-all duration-500 rounded-xl pointer-events-none" />
-                </div>
+                {filteredGallery
+                  .filter((_, index) => index % 4 === col)
+                  .map((item, index) => (
+                    <motion.div
+                      key={item.id}
+                      className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: 0.4 + index * 0.1,
+                      }}
+                      whileHover={{ y: -10, scale: 1.02 }}
+                    >
+                      <div className="relative bg-white p-3">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-auto object-cover rounded-xl"
+                        />
+                        <div className="absolute inset-3 bg-gradient-to-t from-[#1A2A44]/0 via-transparent to-transparent group-hover:from-[#1A2A44]/10 transition-all duration-500 rounded-xl pointer-events-none" />
+                      </div>
+                    </motion.div>
+                  ))}
               </motion.div>
             ))}
           </div>
@@ -223,22 +134,21 @@ const EventsPage: React.FC = () => {
       </motion.section>
 
       {/* CTA Section */}
-      <motion.section 
+      <motion.section
         className="py-16 bg-gradient-to-br from-[#1A2A44] via-[#2A3A54] to-[#1A2A44] relative overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        {/* Enhanced Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-32 h-32 border border-white/20 rounded-full" />
           <div className="absolute bottom-10 right-10 w-24 h-24 border border-white/20 rounded-full" />
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 border border-white/10 rounded-full" />
         </div>
-        
+
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.h2 
+          <motion.h2
             className="text-3xl md:text-4xl font-bold text-white mb-4"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -247,7 +157,7 @@ const EventsPage: React.FC = () => {
           >
             Join Our Community
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-xl text-white/90 mb-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -256,16 +166,16 @@ const EventsPage: React.FC = () => {
           >
             Connect with our community of students and education enthusiasts.
           </motion.p>
-          <motion.button 
+          <motion.button
             onClick={() => openWhatsAppChat(WHATSAPP_MESSAGES.general)}
             className="px-8 py-4 bg-gradient-to-r from-[#FF4500] to-[#FF6B35] text-white font-semibold rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 text-lg"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
-              boxShadow: "0 25px 50px rgba(255, 69, 0, 0.4)"
+              boxShadow: '0 25px 50px rgba(255, 69, 0, 0.4)',
             }}
             whileTap={{ scale: 0.95 }}
           >
