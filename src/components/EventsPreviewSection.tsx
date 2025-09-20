@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { 
   Camera,
   ArrowRight,
-  Filter
+  Filter,
+  Calendar
 } from 'lucide-react';
 import eventsData from '../data/events.json';
 
