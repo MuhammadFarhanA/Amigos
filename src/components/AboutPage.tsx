@@ -607,7 +607,7 @@ const AboutPage: React.FC = () => {
               <p className="text-gray-600 text-sm">
                 {currentSlide + 1} of {teamData.members.length} team members
               </p>
-            
+            </motion.div>
             
             {/* Navigation Dots (Alternative) */}
             <div className="flex justify-center mt-4 space-x-3">
