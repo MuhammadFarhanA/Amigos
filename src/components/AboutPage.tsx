@@ -18,6 +18,7 @@ import {
   TrendingUp
 } from 'lucide-react';
 import aboutData from '../data/about.json';
+import teamData from '../data/team.json';
 
 const AboutPage: React.FC = () => {
   const iconMap = {
@@ -430,6 +431,102 @@ const AboutPage: React.FC = () => {
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Meet the Team Section */}
+      <motion.section 
+        className="py-16"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              className="inline-flex items-center px-4 py-2 bg-[#FF4500]/10 rounded-full mb-6"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Users className="h-5 w-5 text-[#FF4500] mr-2" />
+              <span className="text-[#FF4500] font-semibold">Our Team</span>
+            </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A2A44] mb-4">
+              {teamData.title}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-2">
+              {teamData.subtitle}
+            </p>
+            <p className="text-base text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              {teamData.description}
+            </p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {teamData.members.map((member, index) => (
+              <motion.div 
+                key={index} 
+                className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 text-center"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+              >
+                <motion.div 
+                  className="relative mb-6"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-4 border-[#FF4500] shadow-lg">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full border-4 border-[#FF4500]/20 scale-110 animate-pulse"></div>
+                </motion.div>
+                
+                <motion.h3 
+                  className="text-xl font-bold text-gray-900 mb-2"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
+                  viewport={{ once: true }}
+                >
+                  {member.name}
+                </motion.h3>
+                
+                <motion.p 
+                  className="text-[#FF4500] font-semibold text-sm mb-4"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  {member.position}
+                </motion.p>
+                
+                <motion.div 
+                  className="w-12 h-1 bg-gradient-to-r from-[#FF4500] to-[#FF6B35] rounded-full mx-auto"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: 48 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 + 0.5 }}
+                  viewport={{ once: true }}
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </motion.section>
