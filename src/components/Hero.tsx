@@ -206,12 +206,13 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
                 </motion.p>
                 <motion.button
                   onClick={() => openWhatsAppChat(WHATSAPP_MESSAGES.consultation)}
-                  className="px-6 lg:px-8 py-3 lg:py-4 bg-[#FF4500] text-white font-semibold rounded-lg hover:bg-[#FF4500]/90 transform hover:scale-105 transition-all duration-300 shadow-lg text-base lg:text-lg cursor-pointer"
+                  className="px-6 lg:px-8 py-3 lg:py-4 bg-[#FF4500] text-white font-semibold rounded-lg hover:bg-[#FF4500]/90 transform hover:scale-105 transition-all duration-300 shadow-lg text-base lg:text-lg cursor-pointer relative z-50"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  style={{ pointerEvents: 'auto' }}
                 >
                   Schedule Free Consultation
                 </motion.button>
@@ -362,12 +363,13 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
             </motion.p>
             <motion.button
               onClick={() => openWhatsAppChat(WHATSAPP_MESSAGES.consultation)}
-              className="px-6 py-3 bg-[#FF4500] text-white font-semibold rounded-lg hover:bg-[#FF4500]/90 transform hover:scale-105 transition-all duration-300 shadow-lg cursor-pointer"
+              className="px-6 py-3 bg-[#FF4500] text-white font-semibold rounded-lg hover:bg-[#FF4500]/90 transform hover:scale-105 transition-all duration-300 shadow-lg cursor-pointer relative z-50"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              style={{ pointerEvents: 'auto' }}
             >
               Schedule Free Consultation
             </motion.button>
