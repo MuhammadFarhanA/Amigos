@@ -96,7 +96,7 @@ const TestimonialsSection: React.FC = () => {
                           }
                         }}
                       />
-                      <span className="text-3xl">{client.flag}</span>
+                      
                     </div>
                     <div>
                       <h4 className="text-white font-bold text-lg">{client.country}</h4>
