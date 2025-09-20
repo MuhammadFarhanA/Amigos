@@ -76,30 +76,31 @@ const EventsPage: React.FC = () => {
 
       {/* Gallery */}
       <motion.section 
-        className="py-16"
+        className="py-16 bg-gradient-to-br from-gray-50 via-white to-blue-50"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Gallery Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {/* Modern Gallery Grid */}
+          <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
             {eventsData.gallery.map((item, index) => (
               <motion.div 
                 key={item.id} 
-                className="group relative rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="group relative break-inside-avoid mb-4 md:mb-6"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: (index % 12) * 0.05 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
               >
-                <div className="aspect-[4/3]">
+                <div className="relative bg-white rounded-2xl p-3 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                   <img 
                     src={item.image} 
                     alt={item.title}
-                    className="w-full h-full object-cover rounded-xl"
+                    className="w-full h-auto object-cover rounded-xl"
                   />
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-3 bg-gradient-to-t from-[#1A2A44]/0 via-transparent to-transparent group-hover:from-[#1A2A44]/5 transition-all duration-500 rounded-xl pointer-events-none" />
                 </div>
               </motion.div>
             ))}
@@ -115,9 +116,11 @@ const EventsPage: React.FC = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
+        {/* Enhanced Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-32 h-32 border border-white/20 rounded-full" />
           <div className="absolute bottom-10 right-10 w-24 h-24 border border-white/20 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 border border-white/10 rounded-full" />
         </div>
         
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
@@ -141,12 +144,15 @@ const EventsPage: React.FC = () => {
           </motion.p>
           <motion.button 
             onClick={() => openWhatsAppChat(WHATSAPP_MESSAGES.general)}
-            className="px-8 py-4 bg-[#FF4500] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg"
+            className="px-8 py-4 bg-gradient-to-r from-[#FF4500] to-[#FF6B35] text-white font-semibold rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 text-lg"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 25px 50px rgba(255, 69, 0, 0.4)"
+            }}
             whileTap={{ scale: 0.95 }}
           >
             Connect with Us on WhatsApp

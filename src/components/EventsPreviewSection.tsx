@@ -15,16 +15,17 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
 
   return (
     <motion.section 
-      className="py-12 md:py-20 bg-white relative overflow-hidden"
+      className="py-12 md:py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true, margin: "-100px" }}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-[#1A2A44] rounded-full" />
-        <div className="absolute bottom-20 right-10 w-24 h-24 bg-[#FF4500] rounded-full" />
+      {/* Gradient Background Elements */}
+      <div className="absolute inset-0 overflow-hidden opacity-20">
+        <div className="absolute top-20 -left-20 w-96 h-96 bg-gradient-to-r from-[#1A2A44]/10 to-[#FF4500]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 -right-20 w-80 h-80 bg-gradient-to-l from-[#FF4500]/10 to-[#1A2A44]/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-[#1A2A44]/5 to-[#FF4500]/5 rounded-full blur-2xl" />
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -67,24 +68,26 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
 
         {/* Gallery Preview */}
         <div className="mb-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
             {galleryPreview.map((item, index) => (
               <motion.div 
                 key={item.id} 
-                className="group relative rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="group relative rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.02, y: -8 }}
               >
-                <div className="aspect-[4/3]">
+                <div className="aspect-[4/3] p-2">
                   <img 
                     src={item.image} 
                     alt={item.title}
                     className="w-full h-full object-cover rounded-xl"
                   />
                 </div>
+                {/* Subtle gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A2A44]/0 via-transparent to-transparent group-hover:from-[#1A2A44]/10 transition-all duration-500 rounded-2xl" />
               </motion.div>
             ))}
           </div>
@@ -100,10 +103,10 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
         >
           <motion.button
             onClick={() => onPageChange('events')}
-            className="px-8 py-4 bg-[#1A2A44] text-white font-semibold rounded-lg hover:bg-[#1A2A44]/90 transform hover:scale-105 transition-all duration-300 shadow-lg text-lg flex items-center space-x-2 mx-auto"
+            className="px-8 py-4 bg-gradient-to-r from-[#1A2A44] to-[#2A3A54] text-white font-semibold rounded-xl hover:from-[#1A2A44]/90 hover:to-[#2A3A54]/90 transform hover:scale-105 transition-all duration-300 shadow-xl text-lg flex items-center space-x-2 mx-auto"
             whileHover={{ 
               scale: 1.05,
-              boxShadow: "0 15px 35px rgba(26, 42, 68, 0.3)"
+              boxShadow: "0 20px 40px rgba(26, 42, 68, 0.4)"
             }}
             whileTap={{ scale: 0.95 }}
           >
