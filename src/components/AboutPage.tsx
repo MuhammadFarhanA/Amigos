@@ -488,14 +488,14 @@ const AboutPage: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-4 border-[#FF4500] shadow-lg">
+                  <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[#FF4500] shadow-lg">
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                     />
                   </div>
-                  <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full border-4 border-[#FF4500]/20 scale-110 animate-pulse"></div>
+                  <div className="absolute inset-0 w-32 h-32 mx-auto rounded-full border-4 border-[#FF4500]/20 scale-110 animate-pulse"></div>
                 </motion.div>
                 
                 <motion.h3 
