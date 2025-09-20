@@ -170,7 +170,7 @@ const TestimonialsSection: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
               <div className="text-3xl font-bold text-[#FF4500] mb-2">{clientSuccesses.length}+</div>
               <div className="text-sm text-gray-600 font-medium">Success Stories</div>
