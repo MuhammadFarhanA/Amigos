@@ -115,13 +115,13 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden animate-fade-in-up">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#1A2A44] rounded-lg mt-2 border-t border-white/10">
+          <div className="md:hidden absolute top-full left-0 right-0 z-50 animate-fade-in-up">
+            <div className="mx-4 px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#1A2A44] rounded-lg mt-2 border border-white/10 shadow-2xl backdrop-blur-sm">
               {navigationData.navItems.map((item) => (
                 <div key={item.key}>
                   {item.dropdown ? (
                     <>
-                      <div className="text-white font-medium px-3 py-2 text-sm border-b border-white/10">
+                      <div className="text-white font-medium px-3 py-2 text-sm border-b border-white/20">
                         {item.name}
                       </div>
                       {item.dropdown.map((dropdownItem) => (
