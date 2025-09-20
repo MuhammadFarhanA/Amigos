@@ -515,28 +515,11 @@ const AboutPage: React.FC = () => {
           >
             {/* Main Carousel Container */}
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
-              {/* Instagram-style Header */}
-              <div className="flex items-center justify-between p-4 border-b border-gray-100">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#FF4500] to-[#FF6B35] rounded-full flex items-center justify-center">
-                    <Users className="h-4 w-4 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm">amigos_team</p>
-                    <p className="text-xs text-gray-500">Lahore, Pakistan</p>
-                  </div>
-                </div>
-                <div className="flex space-x-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                </div>
-              </div>
               
-              {/* Story-style Progress Bars */}
-              <div className="flex space-x-1 p-2 bg-black">
+              {/* Instagram-style Progress Bars */}
+              <div className="flex space-x-1 p-3 bg-gray-900">
                 {teamData.members.map((_, index) => (
-                  <div key={index} className="flex-1 h-0.5 bg-gray-600 rounded-full overflow-hidden">
+                  <div key={index} className="flex-1 h-1 bg-gray-600 rounded-full overflow-hidden">
                     <motion.div 
                       className="h-full bg-white rounded-full"
                       initial={{ width: 0 }}
@@ -554,7 +537,7 @@ const AboutPage: React.FC = () => {
               </div>
               
               {/* Image Container */}
-              <div className="relative aspect-square overflow-hidden bg-gray-100">
+              <div className="relative aspect-[4/5] overflow-hidden bg-gray-100">
                 {/* Loading Animation */}
                 <motion.div 
                   className="absolute inset-0 flex items-center justify-center bg-gray-100"
@@ -585,7 +568,7 @@ const AboutPage: React.FC = () => {
                   key={currentSlide}
                   src={teamData.members[currentSlide].image}
                   alt={teamData.members[currentSlide].name}
-                  className="w-full h-full object-cover object-center relative z-10"
+                  className="w-full h-full object-contain relative z-10"
                   initial={{ opacity: 0, scale: 1.05 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
@@ -594,107 +577,48 @@ const AboutPage: React.FC = () => {
                 {/* Navigation Arrows */}
                 <motion.button
                   onClick={prevSlide}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-all duration-300 z-20"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/50 transition-all duration-300 z-20"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <ChevronLeft className="h-4 w-4" />
+                  <ChevronLeft className="h-5 w-5" />
                 </motion.button>
                 
                 <motion.button
                   onClick={nextSlide}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-all duration-300 z-20"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/50 transition-all duration-300 z-20"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <ChevronRight className="h-4 w-4" />
-                </motion.button>
-              </div>
-              
-              {/* Instagram-style Actions Bar */}
-              <div className="flex items-center justify-between p-3 border-b border-gray-100">
-                <div className="flex items-center space-x-4">
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-1"
-                  >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-1"
-                  >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-1"
-                  >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                  </motion.button>
-                </div>
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-1"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                  </svg>
+                  <ChevronRight className="h-5 w-5" />
                 </motion.button>
               </div>
               
               {/* Content Section */}
-              <div className="p-4">
-                <div className="flex items-center space-x-2 mb-2">
-                  <div className="flex space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <div key={i} className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                    ))}
-                  </div>
-                  <span className="text-sm font-semibold text-gray-900">1,247 likes</span>
-                </div>
-                
+              <div className="p-6">
                 <motion.h3 
                   key={`name-${currentSlide}`}
-                  className="font-semibold text-gray-900 mb-1"
+                  className="text-2xl font-bold text-[#1A2A44] mb-2 text-center"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  <span className="font-semibold">amigos_team</span> Meet {teamData.members[currentSlide].name}, our {teamData.members[currentSlide].position}! 👨‍💼✨
+                  {teamData.members[currentSlide].name}
                 </motion.h3>
                 
-                <div className="flex items-center justify-between text-xs text-gray-500 mt-2">
-                  <span>2 hours ago</span>
-                  <span>View all comments</span>
-                </div>
-                
-                <div className="mt-3 pt-3 border-t border-gray-100">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-6 h-6 bg-gray-300 rounded-full"></div>
-                    <input 
-                      type="text" 
-                      placeholder="Add a comment..." 
-                      className="flex-1 text-sm text-gray-500 bg-transparent border-none outline-none"
-                      readOnly
-                    />
-                    <span className="text-sm text-[#FF4500] font-semibold cursor-pointer">Post</span>
-                  </div>
-                </div>
+                <motion.p 
+                  key={`position-${currentSlide}`}
+                  className="text-lg text-[#FF4500] font-semibold text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  {teamData.members[currentSlide].position}
+                </motion.p>
               </div>
             </div>
             
-            {/* Navigation Dots (Alternative) */}
+            {/* Navigation Dots */}
             <div className="flex justify-center mt-6 space-x-2">
               {teamData.members.map((member, index) => (
                 <motion.button
