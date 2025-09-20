@@ -1,4 +1,5 @@
 import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Target, 
@@ -15,18 +16,49 @@ import {
   Quote,
   CheckCircle,
   Star,
-  TrendingUp
+  TrendingUp,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import aboutData from '../data/about.json';
 import teamData from '../data/team.json';
 
 const AboutPage: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
   const iconMap = {
     Home,
     Smartphone,
     Briefcase,
     Shield,
     MapPin
+  };
+
+  // Auto-play functionality
+  React.useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % teamData.members.length);
+    }, 4000);
+    
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % teamData.members.length);
+    setIsAutoPlaying(false);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + teamData.members.length) % teamData.members.length);
+    setIsAutoPlaying(false);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    setIsAutoPlaying(false);
   };
 
   return (
@@ -437,7 +469,7 @@ const AboutPage: React.FC = () => {
 
       {/* Meet the Team Section */}
       <motion.section 
-        className="py-16"
+        className="py-16 bg-gray-50"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -472,62 +504,130 @@ const AboutPage: React.FC = () => {
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamData.members.map((member, index) => (
-              <motion.div 
-                key={index} 
-                className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 text-center"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              >
-                <motion.div 
-                  className="relative mb-6"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[#FF4500] shadow-lg">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  <div className="absolute inset-0 w-32 h-32 mx-auto rounded-full border-4 border-[#FF4500]/20 scale-110 animate-pulse"></div>
-                </motion.div>
+          {/* Instagram-style Carousel */}
+          <motion.div 
+            className="relative max-w-md mx-auto"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
+          >
+            {/* Main Carousel Container */}
+            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+              {/* Image Container */}
+              <div className="relative aspect-square overflow-hidden">
+                <motion.img
+                  key={currentSlide}
+                  src={teamData.members[currentSlide].image}
+                  alt={teamData.members[currentSlide].name}
+                  className="w-full h-full object-cover"
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6 }}
+                />
                 
-                <motion.h3 
-                  className="text-xl font-bold text-gray-900 mb-2"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
-                  viewport={{ once: true }}
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                
+                {/* Navigation Arrows */}
+                <motion.button
+                  onClick={prevSlide}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
-                  {member.name}
+                  <ChevronLeft className="h-5 w-5" />
+                </motion.button>
+                
+                <motion.button
+                  onClick={nextSlide}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </motion.button>
+                
+                {/* Slide Indicators */}
+                <div className="absolute top-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                  {teamData.members.map((_, index) => (
+                    <motion.button
+                      key={index}
+                      onClick={() => goToSlide(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentSlide ? 'bg-white' : 'bg-white/50'
+                      }`}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.8 }}
+                    />
+                  ))}
+                </div>
+              </div>
+              
+              {/* Content Section */}
+              <div className="p-6 text-center">
+                <motion.h3 
+                  key={`name-${currentSlide}`}
+                  className="text-2xl font-bold text-gray-900 mb-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  {teamData.members[currentSlide].name}
                 </motion.h3>
                 
                 <motion.p 
-                  className="text-[#FF4500] font-semibold text-sm mb-4"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
-                  viewport={{ once: true }}
+                  key={`position-${currentSlide}`}
+                  className="text-[#FF4500] font-semibold text-lg mb-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  {member.position}
+                  {teamData.members[currentSlide].position}
                 </motion.p>
                 
+                {/* Decorative Line */}
                 <motion.div 
-                  className="w-12 h-1 bg-gradient-to-r from-[#FF4500] to-[#FF6B35] rounded-full mx-auto"
+                  className="w-16 h-1 bg-gradient-to-r from-[#FF4500] to-[#FF6B35] rounded-full mx-auto"
                   initial={{ width: 0 }}
-                  whileInView={{ width: 48 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 + 0.5 }}
-                  viewport={{ once: true }}
+                  animate={{ width: 64 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
                 />
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </div>
+            
+            {/* Team Member Counter */}
+            <motion.div 
+              className="text-center mt-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <p className="text-gray-600 text-sm">
+                {currentSlide + 1} of {teamData.members.length} team members
+              </p>
+            </div>
+            
+            {/* Navigation Dots (Alternative) */}
+            <div className="flex justify-center mt-4 space-x-3">
+              {teamData.members.map((member, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'bg-[#FF4500] scale-125' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.8 }}
+                  title={member.name}
+                />
+              ))}
+            </div>
+          </motion.div>
         </div>
       </motion.section>
 
