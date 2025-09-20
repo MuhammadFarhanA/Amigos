@@ -1,0 +1,58 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Sarah Johnson",
+      "country": "Australia",
+      "visaType": "Study Visa",
+      "rating": 5,
+      "text": "The team made my dream of studying in Australia come true. Their expertise and guidance throughout the entire process was invaluable. I couldn't have done it without them!",
+      "image": "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+    },
+    {
+      "id": 2,
+      "name": "Michael Chen",
+      "country": "Canada",
+      "visaType": "Tourist Visa",
+      "rating": 5,
+      "text": "Professional, efficient, and reliable. They handled my Canadian tourist visa application seamlessly. The attention to detail was impressive.",
+      "image": "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+    },
+    {
+      "id": 3,
+      "name": "Priya Sharma",
+      "country": "UK",
+      "visaType": "Study Visa",
+      "rating": 5,
+      "text": "From documentation to interview preparation, they guided me every step of the way. Now I'm pursuing my Master's in London thanks to their expertise!",
+      "image": "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+    },
+    {
+      "id": 4,
+      "name": "David Miller",
+      "country": "Germany",
+      "visaType": "Professional Course",
+      "rating": 5,
+      "text": "Their professional course guidance helped me secure admission and visa for my certification program in Berlin. Highly recommended!",
+      "image": "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+    },
+    {
+      "id": 5,
+      "name": "Emily Rodriguez",
+      "country": "New Zealand",
+      "visaType": "Tourist Visa",
+      "rating": 5,
+      "text": "Amazing service! They made the complex visa process simple and stress-free. My family and I had the most wonderful vacation in New Zealand.",
+      "image": "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+    },
+    {
+      "id": 6,
+      "name": "James Wilson",
+      "country": "USA",
+      "visaType": "Study Visa",
+      "rating": 5,
+      "text": "Professional and knowledgeable team. They helped me navigate the F-1 visa process for my PhD program. Couldn't be happier with the results!",
+      "image": "https://images.pexels.com/photos/936048/pexels-photo-936048.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+    }
+  ]
+}

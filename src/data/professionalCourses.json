@@ -1,0 +1,201 @@
+{
+  "title": "🚀 Affordable Professional Courses",
+  "subtitle": "Learn in-demand skills from industry experts running successful businesses in their fields!",
+  "description": "Starting from just $5! Can't find your desired course? Tell us – we'll arrange expert instructors for any specialization!",
+  "specialOffer": {
+    "title": "Special Offer!",
+    "description": "Enroll in any 3 courses and get free CV optimization for international job applications!"
+  },
+  "testimonial": {
+    "text": "Had trouble finding a course in Quantum Computing. Messaged Amigos, and they arranged an expert within 3 days!",
+    "author": "Ali R., Student"
+  },
+  "categories": [
+    {
+      "id": "computer-science",
+      "title": "💻 Computer Science & IT",
+      "icon": "Monitor",
+      "color": "bg-blue-500",
+      "courses": [
+        "Full-Stack Web Development (MERN Stack)",
+        "Python Programming & Automation",
+        "Data Science with Python",
+        "Cybersecurity Fundamentals",
+        "Cloud Computing (AWS/Azure)",
+        "Mobile App Development (Flutter)",
+        "Blockchain Basics",
+        "IT Support Fundamentals",
+        "Software Testing (QA)",
+        "DevOps Essentials"
+      ]
+    },
+    {
+      "id": "business-management",
+      "title": "📈 Business & Management",
+      "icon": "TrendingUp",
+      "color": "bg-green-500",
+      "courses": [
+        "Digital Marketing Mastery",
+        "Project Management (PMP)",
+        "Entrepreneurship Bootcamp",
+        "Financial Accounting",
+        "HR Management",
+        "Supply Chain Management",
+        "Business Analytics",
+        "Leadership Development",
+        "Sales Training",
+        "Customer Service Excellence"
+      ]
+    },
+    {
+      "id": "aviation",
+      "title": "✈️ Aviation",
+      "icon": "Plane",
+      "color": "bg-sky-500",
+      "courses": [
+        "IATA Air Ticketing & Reservations",
+        "Airport Ground Operations",
+        "Cabin Crew Training",
+        "Aviation Safety Management",
+        "Air Cargo Operations",
+        "Aviation English",
+        "Flight Dispatch",
+        "Aircraft Maintenance Basics",
+        "Travel Agency Management",
+        "Tourism & Hospitality"
+      ]
+    },
+    {
+      "id": "civil-engineering",
+      "title": "🏗️ Civil Engineering",
+      "icon": "Building",
+      "color": "bg-orange-500",
+      "courses": [
+        "AutoCAD Civil 3D",
+        "Revit for Structural Design",
+        "Construction Project Management",
+        "Quantity Surveying",
+        "Primavera P6",
+        "ETABS for Building Design",
+        "GIS Applications",
+        "Highway Engineering",
+        "Environmental Engineering",
+        "Plumbing System Design"
+      ]
+    },
+    {
+      "id": "ecommerce",
+      "title": "🛒 E-Commerce",
+      "icon": "ShoppingCart",
+      "color": "bg-purple-500",
+      "courses": [
+        "Amazon FBA Mastery",
+        "Shopify Store Development",
+        "Dropshipping Business",
+        "E-Commerce SEO",
+        "Facebook Ads for E-Commerce",
+        "Product Photography",
+        "E-Commerce Copywriting",
+        "TikTok Shop Strategies",
+        "Wholesale Sourcing",
+        "E-Commerce Analytics"
+      ]
+    },
+    {
+      "id": "game-development",
+      "title": "🎮 Game Development",
+      "icon": "Gamepad2",
+      "color": "bg-red-500",
+      "courses": [
+        "Unity 3D Game Development",
+        "Unreal Engine 5",
+        "Mobile Game Development",
+        "2D Game Design",
+        "Game Character Design",
+        "VR Game Development",
+        "Game Programming with C#",
+        "Game UI/UX Design",
+        "Game Monetization",
+        "Indie Game Marketing"
+      ]
+    },
+    {
+      "id": "artificial-intelligence",
+      "title": "🤖 Artificial Intelligence",
+      "icon": "Brain",
+      "color": "bg-indigo-500",
+      "courses": [
+        "Python for AI",
+        "Machine Learning Basics",
+        "Deep Learning with TensorFlow",
+        "Computer Vision",
+        "Natural Language Processing",
+        "AI Chatbot Development",
+        "AI for Business",
+        "Reinforcement Learning",
+        "AI Ethics",
+        "AI Product Management"
+      ]
+    },
+    {
+      "id": "web-development",
+      "title": "🌐 Web Development",
+      "icon": "Globe",
+      "color": "bg-teal-500",
+      "courses": [
+        "Front-End Development",
+        "Back-End with Node.js",
+        "WordPress Development",
+        "React.js Specialist",
+        "Vue.js Framework",
+        "PHP & MySQL",
+        "Web Performance Optimization",
+        "Progressive Web Apps",
+        "Web Security",
+        "API Development"
+      ]
+    },
+    {
+      "id": "creative-other",
+      "title": "🎨 Creative Canvas & Other Courses",
+      "icon": "Palette",
+      "color": "bg-pink-500",
+      "courses": [
+        "Canva Pro Masterclass",
+        "Video Editing (Premiere Pro)",
+        "UI/UX Design",
+        "Health & Safety Certification",
+        "Virtual Assistant Training",
+        "Content Writing",
+        "CV Writing & Interview Skills"
+      ]
+    }
+  ],
+  "benefits": [
+    {
+      "icon": "Users",
+      "title": "Industry-Expert Instructors",
+      "description": "Learn from professionals running real businesses"
+    },
+    {
+      "icon": "DollarSign",
+      "title": "Starting from just $5",
+      "description": "Most affordable quality education"
+    },
+    {
+      "icon": "Briefcase",
+      "title": "Practical Projects",
+      "description": "Build real portfolio pieces"
+    },
+    {
+      "icon": "FileText",
+      "title": "CV & Job Counseling",
+      "description": "Get help landing jobs worldwide"
+    },
+    {
+      "icon": "Settings",
+      "title": "Custom Courses",
+      "description": "Can't find what you need? Tell us – we'll arrange it!"
+    }
+  ]
+}

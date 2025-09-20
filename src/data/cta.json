@@ -1,0 +1,26 @@
+{
+  "title": "Ready to Start Your Journey?",
+  "subtitle": "Take the first step towards your international dreams with expert guidance",
+  "description": "Join thousands of successful applicants who trusted us with their visa journey. Our expert consultants are ready to guide you through every step of the process.",
+  "features": [
+    {
+      "icon": "Phone",
+      "title": "Free Consultation",
+      "description": "Get personalized advice from our certified experts"
+    },
+    {
+      "icon": "Users",
+      "title": "Expert Guidance", 
+      "description": "Professional support throughout your entire journey"
+    },
+    {
+      "icon": "Clock",
+      "title": "Quick Processing",
+      "description": "Fast and efficient visa application processing"
+    }
+  ],
+  "cta": {
+    "primary": "Book Your Free Consultation Today",
+    "secondary": "No obligation • 30-minute consultation • Expert advice"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Your Gateway to Global Opportunities",
+  "subtitle": "Expert Visa Consultancy for Study & Leisure Travel",
+  "description": "Navigate the complex world of visa applications with confidence. Our experienced consultants provide personalized guidance for study visas, tourist visas, and professional courses to help you achieve your international dreams.",
+  "cta": {
+    "primary": "Get Free Consultation",
+    "secondary": "View Services"
+  },
+  "stats": [
+    {
+      "number": "10,000+",
+      "label": "Successful Applications"
+    },
+    {
+      "number": "95%",
+      "label": "Success Rate"
+    },
+    {
+      "number": "50+",
+      "label": "Countries Covered"
+    },
+    {
+      "number": "15+",
+      "label": "Years Experience"
+    }
+  ]
+}

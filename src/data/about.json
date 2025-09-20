@@ -1,0 +1,87 @@
+{
+  "title": "About Amigos",
+  "subtitle": "Your Trusted Study Abroad & Visa Partner",
+  "description": "At Amigos, we don't just process visas—we transform dreams into global opportunities with unmatched expertise and personalized support.",
+  "mission": "To transform dreams into global opportunities by providing unmatched expertise, personalized support, and comprehensive guidance throughout your international journey.",
+  "vision": "To be Pakistan's most trusted study abroad and visa consultancy, empowering students to achieve life-changing success through our unique insider knowledge and end-to-end support.",
+  "whyStandApart": {
+    "title": "Why We Stand Apart",
+    "description": "Our CEO holds prestigious Master's degrees from top European and UK universities, giving us an insider's edge that no other consultancy in Pakistan can match. Having navigated the challenges of student life, immigration processes, and international settlement firsthand, we offer:",
+    "advantages": [
+      {
+        "title": "Real-World Knowledge",
+        "description": "Firsthand experience of studying/working abroad"
+      },
+      {
+        "title": "Beyond Visa Approvals", 
+        "description": "Post-arrival settlement support most agencies ignore"
+      },
+      {
+        "title": "Global Network",
+        "description": "Strong ties with universities, employers, and immigration experts"
+      }
+    ]
+  },
+  "uniqueServices": {
+    "title": "Our Unique Post-Visa Services",
+    "subtitle": "We guide students through every critical step after landing:",
+    "services": [
+      {
+        "icon": "Home",
+        "title": "Accommodation assistance",
+        "description": "dorms/off-campus"
+      },
+      {
+        "icon": "Smartphone",
+        "title": "SIM cards, bank accounts & tax registration",
+        "description": "Complete setup support"
+      },
+      {
+        "icon": "Briefcase", 
+        "title": "Part-time job search strategies",
+        "description": "Legal work opportunities"
+      },
+      {
+        "icon": "Shield",
+        "title": "Health insurance & legal compliance",
+        "description": "Stay compliant with local laws"
+      },
+      {
+        "icon": "MapPin",
+        "title": "PR pathway counseling",
+        "description": "Plan your immigration future"
+      }
+    ]
+  },
+  "amigosAdvantage": {
+    "title": "The Amigos Advantage",
+    "quote": "We've walked the path you're about to take.",
+    "description": "While others focus only on admissions, we prepare you for real success abroad – from cultural adaptation to career-building. Our CEO's personal academic journey across continents ensures you get practical advice you won't find elsewhere.",
+    "cta": "Join thousands who've turned study visas into life-changing achievements with our end-to-end support"
+  },
+  "ceo": {
+    "name": "CEO & Founder",
+    "credentials": "Master's Degrees from Top European & UK Universities",
+    "experience": "Personal academic journey across continents",
+    "expertise": "Student life, immigration processes, and international settlement",
+    "image": "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+  },
+  "achievements": [
+    {
+      "title": "Thousands of Success Stories",
+      "description": "Students who've turned study visas into life-changing achievements"
+    },
+    {
+      "title": "Unique Insider Knowledge",
+      "description": "CEO's firsthand experience studying in Europe and UK"
+    },
+    {
+      "title": "Comprehensive Support",
+      "description": "End-to-end guidance from visa to settlement and career building"
+    },
+    {
+      "title": "Pakistan's Leading Consultancy",
+      "description": "Unmatched expertise and personalized support in the industry"
+    }
+  ]
+}

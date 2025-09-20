@@ -1,0 +1,128 @@
+{
+  "title": "Tourist Visa Services",
+  "subtitle": "Tourist Visa Services & Affordable Travel Packages – Explore the World with Amigos!",
+  "description": "At Amigos, we make international travel simple, affordable, and stress-free. Whether you're planning a family vacation, honeymoon, business trip, or solo adventure, our expert visa consultants and travel specialists ensure smooth visa processing and unbeatable travel packages to your dream destinations.",
+  "dreamingText": "Dreaming of Your Next Adventure? Let Amigos Handle the Visa & Travel Plans!",
+  "whyChooseUs": [
+    {
+      "icon": "CheckCircle",
+      "title": "Easy Visa Processing",
+      "description": "High approval rates for Schengen, UK, USA, UAE, Canada, Australia, and more"
+    },
+    {
+      "icon": "DollarSign",
+      "title": "Budget-Friendly Travel Packages",
+      "description": "Customized tours, flights, and hotels at the best prices"
+    },
+    {
+      "icon": "Clock",
+      "title": "Fast & Reliable Service",
+      "description": "Minimal documentation, quick processing"
+    },
+    {
+      "icon": "Users",
+      "title": "End-to-End Support",
+      "description": "From visa applications to itinerary planning, we handle it all"
+    },
+    {
+      "icon": "Award",
+      "title": "Trusted by Thousands",
+      "description": "Pakistan's leading visa and travel consultancy with a proven track record"
+    }
+  ],
+  "countries": {
+    "europe": {
+      "title": "Europe",
+      "description": "Schengen Visa (France, Germany, Italy, Spain, etc.), UK, Turkey, Russia",
+      "countries": [
+        { "name": "France", "code": "FR", "flag": "🇫🇷" },
+        { "name": "Germany", "code": "DE", "flag": "🇩🇪" },
+        { "name": "Italy", "code": "IT", "flag": "🇮🇹" },
+        { "name": "Spain", "code": "ES", "flag": "🇪🇸" },
+        { "name": "United Kingdom", "code": "GB", "flag": "🇬🇧" },
+        { "name": "Turkey", "code": "TR", "flag": "🇹🇷" },
+        { "name": "Russia", "code": "RU", "flag": "🇷🇺" }
+      ]
+    },
+    "asia": {
+      "title": "Asia",
+      "description": "UAE, Saudi Arabia, Malaysia, China, Thailand, Indonesia",
+      "countries": [
+        { "name": "United Arab Emirates", "code": "AE", "flag": "🇦🇪" },
+        { "name": "Saudi Arabia", "code": "SA", "flag": "🇸🇦" },
+        { "name": "Malaysia", "code": "MY", "flag": "🇲🇾" },
+        { "name": "China", "code": "CN", "flag": "🇨🇳" },
+        { "name": "Thailand", "code": "TH", "flag": "🇹🇭" },
+        { "name": "Indonesia", "code": "ID", "flag": "🇮🇩" }
+      ]
+    },
+    "americas": {
+      "title": "Americas",
+      "description": "USA, Canada",
+      "countries": [
+        { "name": "United States", "code": "US", "flag": "🇺🇸" },
+        { "name": "Canada", "code": "CA", "flag": "🇨🇦" }
+      ]
+    },
+    "oceania": {
+      "title": "Oceania",
+      "description": "Australia, New Zealand",
+      "countries": [
+        { "name": "Australia", "code": "AU", "flag": "🇦🇺" },
+        { "name": "New Zealand", "code": "NZ", "flag": "🇳🇿" }
+      ]
+    }
+  },
+  "services": [
+    {
+      "title": "Hassle-Free Visa Processing",
+      "icon": "FileText",
+      "features": [
+        "Documentation Assistance – We prepare your application to avoid rejections",
+        "Appointment Booking – No more long waits—we secure slots fast",
+        "Visa Interview Preparation – Tips to confidently clear your visa interview"
+      ]
+    },
+    {
+      "title": "Affordable Travel Packages",
+      "icon": "Plane",
+      "features": [
+        "Flight Bookings – Best deals on airlines worldwide",
+        "Hotel Reservations – Luxury to budget stays, as per your preference",
+        "Tour Packages – Guided tours, sightseeing, and adventure trips"
+      ]
+    },
+    {
+      "title": "Specialized Visa Services",
+      "icon": "Users",
+      "features": [
+        "Family Visit Visa – Reunite with loved ones abroad",
+        "Business Visa – Smooth processing for corporate travelers",
+        "Holiday & Honeymoon Packages – Romantic getaways, group tours, and more"
+      ]
+    }
+  ],
+  "whyTrustUs": [
+    {
+      "icon": "Award",
+      "title": "Experienced Visa Experts",
+      "description": "Deep knowledge of global immigration rules"
+    },
+    {
+      "icon": "DollarSign",
+      "title": "Transparent Pricing",
+      "description": "No hidden charges, clear fee structure"
+    },
+    {
+      "icon": "Clock",
+      "title": "24/7 Customer Support",
+      "description": "Assistance before, during, and after your trip"
+    }
+  ],
+  "cta": {
+    "title": "Your Journey Starts Here!",
+    "subtitle": "Don't let visa complexities stop you from exploring the world. Amigos makes travel accessible, affordable, and unforgettable.",
+    "button": "Contact Us Today!",
+    "description": "Get your tourist visa approved and book your dream vacation with confidence."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "services": [
+    {
+      "id": "study-visa",
+      "icon": "GraduationCap",
+      "title": "Study Visa",
+      "description": "Turn your educational dreams into reality with our comprehensive study visa services for top universities worldwide.",
+      "features": [
+        "University Selection & Guidance",
+        "Complete Application Support", 
+        "Document Preparation & Review",
+        "Interview Coaching & Preparation"
+      ],
+      "page": "study-visa",
+      "color": "blue"
+    },
+    {
+      "id": "tourist-visa",
+      "icon": "Plane",
+      "title": "Tourist Visa",
+      "description": "Explore the world with confidence through our expert tourist visa consultation services for leisure travel.",
+      "features": [
+        "Comprehensive Visa Assessment",
+        "Application Form Support",
+        "Document Review & Verification", 
+        "Travel Planning Assistance"
+      ],
+      "page": "tourist-visa",
+      "color": "orange"
+    },
+    {
+      "id": "professional-courses",
+      "icon": "BookOpen",
+      "title": "Professional Courses",
+      "description": "Advance your career with internationally recognized professional certifications and skill development programs.",
+      "features": [
+        "Course Selection & Matching",
+        "Career Guidance & Planning",
+        "Certification Support",
+        "Industry Network Connections"
+      ],
+      "page": "courses",
+      "color": "blue"
+    }
+  ]
+}

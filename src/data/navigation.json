@@ -1,0 +1,17 @@
+{
+  "brand": "Amigos",
+  "navItems": [
+    { "name": "Home", "key": "home" },
+    { 
+      "name": "Visa Services", 
+      "key": "visa",
+      "dropdown": [
+        { "name": "Study Visa", "key": "study-visa" },
+        { "name": "Tourist Visa", "key": "tourist-visa" }
+      ]
+    },
+    { "name": "Professional Courses", "key": "courses" },
+    { "name": "About", "key": "about" },
+    { "name": "Contact", "key": "contact" }
+  ]
+}

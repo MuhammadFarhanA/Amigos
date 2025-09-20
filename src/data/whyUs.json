@@ -1,0 +1,126 @@
+{
+  "ceo": {
+    "title": "Meet Your Guide – Our CEO",
+    "subtitle": "Why We're Different From Other Consultancies",
+    "degrees": [
+      "UK/EU MS. Strategic International Management"
+    ],
+    "experience": [
+      "Student visa struggles",
+      "Cultural adaptation challenges", 
+      "Part-time job hunting abroad",
+      "Immigration & PR processes"
+    ],
+    "quote": "I've walked the path you're about to take – that's why we've designed services that actually solve real problems international students face.",
+    "image": "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+  },
+  "postArrivalServices": {
+    "title": "Our UNMATCHED Post-Arrival Services",
+    "services": [
+      {
+        "icon": "Home",
+        "title": "Accommodation",
+        "description": "Pre-arranged housing solutions",
+        "benefit": "Avoid expensive last-minute rentals"
+      },
+      {
+        "icon": "CreditCard",
+        "title": "Banking",
+        "description": "Account opening assistance",
+        "benefit": "Get local banking in 72 hours"
+      },
+      {
+        "icon": "Smartphone",
+        "title": "SIM Cards",
+        "description": "Local number setup",
+        "benefit": "Stay connected from Day 1"
+      },
+      {
+        "icon": "Shield",
+        "title": "Health Insurance",
+        "description": "Mandatory coverage sorted",
+        "benefit": "Comply with visa requirements"
+      },
+      {
+        "icon": "Briefcase",
+        "title": "Part-Time Jobs",
+        "description": "Legal work guidance",
+        "benefit": "Earn while you learn"
+      },
+      {
+        "icon": "MapPin",
+        "title": "PR Pathways",
+        "description": "Immigration counseling",
+        "benefit": "Plan your future early"
+      }
+    ]
+  },
+  "successProcess": {
+    "title": "Our 4-Step Success Process",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Free Career Assessment",
+        "description": "Match your profile with ideal countries/courses"
+      },
+      {
+        "number": "2", 
+        "title": "University Admission",
+        "description": "100% acceptance guarantee with partner institutions"
+      },
+      {
+        "number": "3",
+        "title": "Visa Processing", 
+        "description": "Expert documentation & interview coaching"
+      },
+      {
+        "number": "4",
+        "title": "Pre-Departure Briefing",
+        "description": "Airport pickup contacts, packing lists, cultural do's/don'ts"
+      }
+    ]
+  },
+  "globalNetwork": {
+    "title": "Our Global Network",
+    "subtitle": "50+ Trusted Destinations",
+    "regions": [
+      {
+        "name": "Europe",
+        "countries": [
+          { "name": "UK", "flag": "https://flagcdn.com/w40/gb.png" },
+          { "name": "Germany", "flag": "https://flagcdn.com/w40/de.png" },
+          { "name": "France", "flag": "https://flagcdn.com/w40/fr.png" },
+          { "name": "Italy", "flag": "https://flagcdn.com/w40/it.png" }
+        ]
+      },
+      {
+        "name": "Americas", 
+        "countries": [
+          { "name": "USA", "flag": "https://flagcdn.com/w40/us.png" },
+          { "name": "Canada", "flag": "https://flagcdn.com/w40/ca.png" }
+        ]
+      },
+      {
+        "name": "Asia",
+        "countries": [
+          { "name": "UAE", "flag": "https://flagcdn.com/w40/ae.png" },
+          { "name": "Malaysia", "flag": "https://flagcdn.com/w40/my.png" },
+          { "name": "China", "flag": "https://flagcdn.com/w40/cn.png" },
+          { "name": "Turkey", "flag": "https://flagcdn.com/w40/tr.png" }
+        ]
+      },
+      {
+        "name": "Oceania",
+        "countries": [
+          { "name": "Australia", "flag": "https://flagcdn.com/w40/au.png" },
+          { "name": "New Zealand", "flag": "https://flagcdn.com/w40/nz.png" }
+        ]
+      }
+    ],
+    "additionalDestinations": "+30 more premium destinations"
+  },
+  "cta": {
+    "title": "Take Your First Step Today!",
+    "button": "Book Your Free Session Today"
+  }
+}

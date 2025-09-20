@@ -1,0 +1,36 @@
+{
+  "company": {
+    "name": "Amigos Overseas Education",
+    "description": "Your trusted study abroad & visa partner. We transform dreams into global opportunities with unmatched expertise and personalized support.",
+    "social": [
+      { "name": "Facebook", "icon": "Facebook", "url": "#" },
+      { "name": "Twitter", "icon": "Twitter", "url": "#" },
+      { "name": "LinkedIn", "icon": "Linkedin", "url": "#" },
+      { "name": "Instagram", "icon": "Instagram", "url": "#" }
+    ]
+  },
+  "services": [
+    { "name": "Study Visa", "key": "study-visa" },
+    { "name": "Tourist Visa", "key": "tourist-visa" },
+    { "name": "Professional Courses", "key": "courses" },
+    { "name": "Document Review", "url": "#" }
+  ],
+  "quickLinks": [
+    { "name": "About Us", "key": "about" },
+    { "name": "Contact Us", "key": "contact" },
+    { "name": "Success Stories", "url": "#" },
+    { "name": "FAQ", "url": "#" }
+  ],
+  "contact": {
+    "address": "Civic Centre, Mian Plaza, Block D2, Office Number 1\nJohar Town, Lahore, Pakistan 54782",
+    "phone": "+36205895495",
+    "email": "info@amigosoverseaseducation.com",
+    "website": "www.amigosoverseaseducation.com"
+  },
+  "legal": [
+    { "name": "Privacy Policy", "url": "#" },
+    { "name": "Terms of Service", "url": "#" },
+    { "name": "Cookie Policy", "url": "#" }
+  ],
+  "copyright": "© 2024 Amigos Overseas Education. All rights reserved."
+}

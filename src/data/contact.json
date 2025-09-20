@@ -1,0 +1,53 @@
+{
+  "title": "Contact Amigos",
+  "subtitle": "Get in Touch for Expert Visa Guidance",
+  "description": "Ready to start your study abroad journey? Our expert consultants at Amigos are here to help you every step of the way. Contact us today for a free consultation.",
+  "office": {
+    "address": "Civic Centre, Mian Plaza, Block D2, Office Number 1, Johar Town, Lahore, Pakistan 54782",
+    "phone": "+36205895495",
+    "email": "info@amigosoverseaseducation.com",
+    "hours": {
+      "weekdays": "9:00 AM - 7:00 PM",
+      "saturday": "10:00 AM - 4:00 PM",
+      "sunday": "Closed"
+    }
+  },
+  "services": [
+    {
+      "title": "Free Consultation",
+      "description": "30-minute free consultation to assess your visa requirements and success probability.",
+      "duration": "30 minutes",
+      "price": "Free"
+    },
+    {
+      "title": "Document Review",
+      "description": "Comprehensive review of your documents and identification of any gaps or improvements needed.",
+      "duration": "1 hour",
+      "price": "₹2,500"
+    },
+    {
+      "title": "Complete Visa Support",
+      "description": "End-to-end visa application support including documentation, application submission, and interview preparation.",
+      "duration": "Full process",
+      "price": "Starting from ₹15,000"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How long does the visa process take?",
+      "answer": "Processing times vary by country and visa type. Tourist visas typically take 5-30 days, while study visas can take 4-12 weeks. We provide specific timelines during your consultation."
+    },
+    {
+      "question": "What is your success rate?",
+      "answer": "We maintain a 95% success rate across all visa categories. Our expertise and thorough preparation significantly increase your chances of approval."
+    },
+    {
+      "question": "Do you offer refunds if the visa is rejected?",
+      "answer": "We offer a 'Success Guarantee' program where we provide a partial refund if your visa is rejected due to our error in documentation or process."
+    },
+    {
+      "question": "Can you help with urgent visa applications?",
+      "answer": "Yes, we offer expedited processing services for urgent applications. Additional fees may apply, and success depends on the destination country's policies."
+    }
+  ]
+}

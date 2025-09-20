@@ -1,0 +1,163 @@
+{
+  "title": "Study Visa Services",
+  "subtitle": "Study Abroad Consultants in Pakistan – Your Gateway to Global Education",
+  "description": "End-to-end support from university admission to visa approval, with unique post-arrival services that others don't offer.",
+  "whyChooseUs": [
+    {
+      "icon": "CheckCircle",
+      "title": "End-to-End Support",
+      "description": "From university admission to visa approval"
+    },
+    {
+      "icon": "Users",
+      "title": "Post-Arrival Settlement", 
+      "description": "We don't leave you stranded after landing!"
+    },
+    {
+      "icon": "GraduationCap",
+      "title": "CEO with Firsthand Experience",
+      "description": "Our founder studied in Europe/UK & knows the struggles"
+    },
+    {
+      "icon": "Award",
+      "title": "Trusted by Thousands",
+      "description": "Highest satisfaction rates of clients"
+    }
+  ],
+  "postArrivalServices": [
+    {
+      "icon": "Home",
+      "title": "Accommodation Assistance",
+      "description": "Find safe dorms/apartments near your campus"
+    },
+    {
+      "icon": "CreditCard",
+      "title": "Bank Account & Tax ID Help",
+      "description": "Open accounts, get tax cards, avoid fines"
+    },
+    {
+      "icon": "Shield",
+      "title": "Health Insurance Setup",
+      "description": "Comply with local laws affordably"
+    },
+    {
+      "icon": "Smartphone",
+      "title": "SIM Card & Local Essentials",
+      "description": "Get connected immediately after landing"
+    },
+    {
+      "icon": "Briefcase",
+      "title": "Part-Time Job Guidance",
+      "description": "Legally work while studying"
+    },
+    {
+      "icon": "MapPin",
+      "title": "PR Pathway Counseling",
+      "description": "Plan your immigration future early"
+    }
+  ],
+  "countries": {
+    "europe": [
+      { "name": "Austria", "code": "AT", "flag": "🇦🇹" },
+      { "name": "Belgium", "code": "BE", "flag": "🇧🇪" },
+      { "name": "Bulgaria", "code": "BG", "flag": "🇧🇬" },
+      { "name": "Croatia", "code": "HR", "flag": "🇭🇷" },
+      { "name": "Cyprus", "code": "CY", "flag": "🇨🇾" },
+      { "name": "Czech Republic", "code": "CZ", "flag": "🇨🇿" },
+      { "name": "Denmark", "code": "DK", "flag": "🇩🇰" },
+      { "name": "Estonia", "code": "EE", "flag": "🇪🇪" },
+      { "name": "Finland", "code": "FI", "flag": "🇫🇮" },
+      { "name": "France", "code": "FR", "flag": "🇫🇷" },
+      { "name": "Germany", "code": "DE", "flag": "🇩🇪" },
+      { "name": "Greece", "code": "GR", "flag": "🇬🇷" },
+      { "name": "Hungary", "code": "HU", "flag": "🇭🇺" },
+      { "name": "Iceland", "code": "IS", "flag": "🇮🇸" },
+      { "name": "Ireland", "code": "IE", "flag": "🇮🇪" },
+      { "name": "Italy", "code": "IT", "flag": "🇮🇹" },
+      { "name": "Latvia", "code": "LV", "flag": "🇱🇻" },
+      { "name": "Lithuania", "code": "LT", "flag": "🇱🇹" },
+      { "name": "Luxembourg", "code": "LU", "flag": "🇱🇺" },
+      { "name": "Malta", "code": "MT", "flag": "🇲🇹" },
+      { "name": "Netherlands", "code": "NL", "flag": "🇳🇱" },
+      { "name": "Norway", "code": "NO", "flag": "🇳🇴" },
+      { "name": "Poland", "code": "PL", "flag": "🇵🇱" },
+      { "name": "Portugal", "code": "PT", "flag": "🇵🇹" },
+      { "name": "Romania", "code": "RO", "flag": "🇷🇴" },
+      { "name": "Serbia", "code": "RS", "flag": "🇷🇸" },
+      { "name": "Slovakia", "code": "SK", "flag": "🇸🇰" },
+      { "name": "Slovenia", "code": "SI", "flag": "🇸🇮" },
+      { "name": "Spain", "code": "ES", "flag": "🇪🇸" },
+      { "name": "Sweden", "code": "SE", "flag": "🇸🇪" },
+      { "name": "Switzerland", "code": "CH", "flag": "🇨🇭" },
+      { "name": "United Kingdom", "code": "GB", "flag": "🇬🇧" }
+    ],
+    "americas": [
+      { "name": "United States", "code": "US", "flag": "🇺🇸" },
+      { "name": "Canada", "code": "CA", "flag": "🇨🇦" }
+    ],
+    "asia": [
+      { "name": "United Arab Emirates", "code": "AE", "flag": "🇦🇪" },
+      { "name": "Saudi Arabia", "code": "SA", "flag": "🇸🇦" },
+      { "name": "China", "code": "CN", "flag": "🇨🇳" },
+      { "name": "Malaysia", "code": "MY", "flag": "🇲🇾" },
+      { "name": "Azerbaijan", "code": "AZ", "flag": "🇦🇿" },
+      { "name": "Indonesia", "code": "ID", "flag": "🇮🇩" },
+      { "name": "Japan", "code": "JP", "flag": "🇯🇵" },
+      { "name": "Thailand", "code": "TH", "flag": "🇹🇭" }
+    ],
+    "oceania": [
+      { "name": "Australia", "code": "AU", "flag": "🇦🇺" },
+      { "name": "New Zealand", "code": "NZ", "flag": "🇳🇿" }
+    ],
+    "africa": [
+      { "name": "South Africa", "code": "ZA", "flag": "🇿🇦" },
+      { "name": "Morocco", "code": "MA", "flag": "🇲🇦" }
+    ]
+  },
+  "process": [
+    {
+      "step": "1",
+      "icon": "Target",
+      "title": "Free Career Counseling",
+      "description": "Match you with ideal courses/countries"
+    },
+    {
+      "step": "2",
+      "icon": "BookOpen",
+      "title": "University Admissions",
+      "description": "100% acceptance guarantee"
+    },
+    {
+      "step": "3",
+      "icon": "FileText",
+      "title": "Visa Processing",
+      "description": "Expert documentation & interview prep"
+    },
+    {
+      "step": "4",
+      "icon": "Plane",
+      "title": "Pre-Departure Briefing",
+      "description": "Airport pickup contacts, packing lists, cultural do's/don'ts"
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Amigos found me accommodation in Budapest before I even landed",
+      "author": "Asad Ali",
+      "country": "Hungary"
+    },
+    {
+      "text": "Their tax registration help saved me 6 months of struggle",
+      "author": "Ayesha Khan",
+      "country": "Canada"
+    }
+  ],
+  "ceoQuote": "We've been through exactly what you're about to experience – the confusion, the paperwork nightmares, the cultural shocks. That's why we've designed services that actually solve real student problems.",
+  "ceoCredentials": "CEO, M.S (UK/Europe)",
+  "contact": {
+    "whatsapp": "+36205895495",
+    "email": "info@amigosoverseaseducation.com",
+    "offices": ["Lahore"]
+  },
+  "cta": "Limited Seats – Apply Now For Current Or Upcoming Intake!"
+}
