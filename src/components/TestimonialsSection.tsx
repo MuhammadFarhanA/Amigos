@@ -183,10 +183,7 @@ const TestimonialsSection: React.FC = () => {
               <div className="text-3xl font-bold text-[#FF4500] mb-2">50+</div>
               <div className="text-sm text-gray-600 font-medium">Universities</div>
             </div>
-            <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-              <div className="text-3xl font-bold text-[#1A2A44] mb-2">95%</div>
-              <div className="text-sm text-gray-600 font-medium">Success Rate</div>
-            </div>
+            
           </div>
         </motion.div>
       </motion.div>
