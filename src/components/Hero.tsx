@@ -168,12 +168,12 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
       <div className="grid lg:grid-cols-2 min-h-screen">
         {/* Left Side - Content */}
         <motion.div 
-          className="bg-[#1A2A44] flex items-center justify-center px-6 lg:px-12"
+          className="bg-[#1A2A44] flex items-start justify-center px-6 lg:px-12 pt-16 pb-32"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="max-w-lg text-white">
+          <div className="max-w-lg text-white mt-8">
             <motion.h1 
               className="text-4xl lg:text-5xl font-bold mb-6 leading-tight"
               initial={{ opacity: 0, y: 30 }}
@@ -215,7 +215,7 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
 
         {/* Right Side - Image */}
         <motion.div 
-          className="relative bg-gray-100 flex items-center justify-center overflow-hidden min-h-0"
+          className="relative bg-gray-100 overflow-hidden"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
