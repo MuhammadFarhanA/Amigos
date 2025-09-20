@@ -521,7 +521,7 @@ const AboutPage: React.FC = () => {
                   key={currentSlide}
                   src={teamData.members[currentSlide].image}
                   alt={teamData.members[currentSlide].name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                   initial={{ opacity: 0, scale: 1.1 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6 }}
