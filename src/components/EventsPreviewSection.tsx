@@ -1,10 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Camera,
   ArrowRight,
-  Filter,
-  Calendar
 } from 'lucide-react';
 import eventsData from '../data/events.json';
 
@@ -46,8 +43,7 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Calendar className="h-5 w-5 text-[#FF4500] mr-2" />
-            <span className="text-[#FF4500] font-semibold">Gallery</span>
+            <span className="text-[#FF4500] font-semibold">📸 Gallery</span>
           </motion.div>
           <motion.h2 
             className="text-3xl md:text-4xl font-bold text-[#1A2A44] mb-4"
@@ -56,7 +52,7 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            Our Event Gallery
+            Event Gallery
           </motion.h2>
           <motion.p 
             className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
@@ -65,7 +61,7 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
             transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            Explore moments from our workshops, celebrations, seminars, and community events.
+            Moments from our events and activities.
           </motion.p>
         </motion.div>
 
@@ -75,29 +71,19 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
             {galleryPreview.map((item, index) => (
               <motion.div 
                 key={item.id} 
-                className="group relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="group relative rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="relative overflow-hidden aspect-[4/3]">
+                <div className="aspect-[4/3]">
                   <img 
                     src={item.image} 
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover rounded-xl"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
-                  <div className="absolute top-3 left-3">
-                    <div className="bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-semibold text-[#1A2A44]">
-                      {item.category}
-                    </div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
-                    <h4 className="text-white font-semibold text-sm">{item.title}</h4>
-                    <p className="text-white/80 text-xs mt-1">{item.description}</p>
-                  </div>
                 </div>
               </motion.div>
             ))}
@@ -131,7 +117,7 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
             transition={{ duration: 0.6, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            Explore our complete collection of event photos and memories
+            View our complete photo collection
           </motion.p>
         </motion.div>
       </div>

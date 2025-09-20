@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Camera,
-  Filter,
-  Image as ImageIcon,
-  Calendar
 } from 'lucide-react';
 import eventsData from '../data/events.json';
 import { openWhatsAppChat, WHATSAPP_MESSAGES } from '../utils/whatsapp';
@@ -85,53 +82,24 @@ const EventsPage: React.FC = () => {
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 ${
-                  selectedCategory === category
-                    ? 'bg-[#FF4500] text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                {category === 'all' ? 'All' : category}
-              </button>
-            ))}
-          </div>
-
           {/* Gallery Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredGallery.map((item, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {eventsData.gallery.map((item, index) => (
               <motion.div 
                 key={item.id} 
-                className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="group relative rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
               >
-                <div className="relative overflow-hidden">
+                <div className="aspect-[4/3]">
                   <img 
                     src={item.image} 
                     alt={item.title}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover rounded-xl"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-[#1A2A44]">
-                    {item.category}
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <h3 className="text-white font-bold text-lg mb-1">{item.title}</h3>
-                    <p className="text-white/90 text-sm mb-2">{item.description}</p>
-                    <div className="flex items-center text-white/80 text-xs">
-                      <Calendar className="h-3 w-3 mr-1" />
-                      <span>{new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             ))}
@@ -169,7 +137,7 @@ const EventsPage: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Be part of our vibrant community of students, alumni, and education enthusiasts.
+            Connect with our community of students and education enthusiasts.
           </motion.p>
           <motion.button 
             onClick={() => openWhatsAppChat(WHATSAPP_MESSAGES.general)}
