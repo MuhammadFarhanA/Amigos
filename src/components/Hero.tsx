@@ -217,7 +217,7 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
 
           {/* Right Side - Image */}
           <motion.div 
-            className="relative bg-gray-100 overflow-hidden"
+            className="relative bg-gray-100 overflow-hidden flex"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
