@@ -24,8 +24,6 @@ interface WhyUsSectionProps {
 }
 
 const WhyUsSection: React.FC<WhyUsSectionProps> = ({ onGetConsultation }) => {
-  const [scrollY, setScrollY] = useState(0);
-  
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact-section');
     if (contactSection) {
@@ -33,11 +31,6 @@ const WhyUsSection: React.FC<WhyUsSectionProps> = ({ onGetConsultation }) => {
     }
   };
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const iconMap = {
     Home,
@@ -57,25 +50,9 @@ const WhyUsSection: React.FC<WhyUsSectionProps> = ({ onGetConsultation }) => {
       viewport={{ once: true, margin: "-100px" }}
     >
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
-          className="absolute top-20 -left-20 w-96 h-96 bg-gradient-to-r from-[#1A2A44]/5 to-[#FF4500]/5 rounded-full blur-3xl"
-          animate={{ 
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-20 -right-20 w-80 h-80 bg-gradient-to-l from-[#FF4500]/5 to-[#1A2A44]/5 rounded-full blur-3xl"
-          animate={{ 
-            x: [0, -80, 0],
-            y: [0, 60, 0],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-        />
+      <div className="absolute inset-0 overflow-hidden opacity-30">
+        <div className="absolute top-20 -left-20 w-96 h-96 bg-gradient-to-r from-[#1A2A44]/5 to-[#FF4500]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 -right-20 w-80 h-80 bg-gradient-to-l from-[#FF4500]/5 to-[#1A2A44]/5 rounded-full blur-3xl" />
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

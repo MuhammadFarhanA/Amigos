@@ -9,8 +9,6 @@ interface CTASectionProps {
 }
 
 const CTASection: React.FC<CTASectionProps> = ({ onGetConsultation }) => {
-  const [scrollY, setScrollY] = useState(0);
-  
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact-section');
     if (contactSection) {
@@ -18,11 +16,6 @@ const CTASection: React.FC<CTASectionProps> = ({ onGetConsultation }) => {
     }
   };
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const iconMap = {
     Phone,
@@ -39,20 +32,11 @@ const CTASection: React.FC<CTASectionProps> = ({ onGetConsultation }) => {
       viewport={{ once: true, margin: "-100px" }}
     >
       {/* Background Pattern */}
-      <motion.div 
-        className="absolute inset-0 opacity-10 -z-10"
-        style={{
-          transform: `translateY(${scrollY * 0.3}px)`,
-        }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-      >
+      <div className="absolute inset-0 opacity-10 -z-10">
         <div className="absolute inset-0" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }} />
-      </motion.div>
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 

@@ -8,13 +8,6 @@ interface ServicesSectionProps {
 }
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({ onPageChange }) => {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const iconMap = {
     GraduationCap,
@@ -31,12 +24,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ onPageChange }) => {
       viewport={{ once: true, margin: "-100px" }}
     >
       {/* Parallax Background Elements */}
-      <div 
-        className="absolute inset-0 opacity-5 -z-10"
-        style={{
-          transform: `translateY(${scrollY * 0.2}px)`,
-        }}
-      >
+      <div className="absolute inset-0 opacity-5 -z-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-[#1A2A44] rounded-full"></div>
         <div className="absolute top-40 right-20 w-24 h-24 bg-[#FF4500] rounded-full"></div>
         <div className="absolute bottom-20 left-1/3 w-40 h-40 bg-[#1A2A44] rounded-full"></div>
