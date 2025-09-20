@@ -65,13 +65,20 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
   }, [hasExited]);
 
   useEffect(() => {
-    // Lock scroll initially only if hero is visible and hasn't exited
-    if (isVisible && !hasExited) {
+    // Lock scroll initially only if hero is visible and hasn't exited AND on desktop
+    if (isVisible && !hasExited && typeof window !== 'undefined' && window.innerWidth >= 1024) {
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
       document.body.style.top = '0';
       document.body.style.left = '0';
       document.body.style.right = '0';
+    } else {
+      // Ensure mobile can always scroll
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.top = 'unset';
+      document.body.style.left = 'unset';
+      document.body.style.right = 'unset';
     }
     
     return () => {
@@ -86,7 +93,7 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      if (isVisible && !isTransitioning) {
+      if (isVisible && !isTransitioning && typeof window !== 'undefined' && window.innerWidth >= 1024) {
         e.preventDefault();
         
         if (e.deltaY > 0) { // Scrolling down
@@ -101,13 +108,15 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (isVisible && !isTransitioning) {
+      // Never prevent touch move on mobile - only prevent on desktop if needed
+      if (isVisible && !isTransitioning && typeof window !== 'undefined' && window.innerWidth >= 1024) {
         e.preventDefault();
       }
     };
 
     const handleTouchStart = (e: TouchEvent) => {
-      if (isVisible && !isTransitioning) {
+      // Only handle touch events for desktop hero exit
+      if (isVisible && !isTransitioning && typeof window !== 'undefined' && window.innerWidth >= 1024) {
         const touch = e.touches[0];
         const startY = touch.clientY;
         
@@ -131,7 +140,7 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isVisible && !isTransitioning) {
+      if (isVisible && !isTransitioning && typeof window !== 'undefined' && window.innerWidth >= 1024) {
         if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
           e.preventDefault();
           setScrollAttempts(prev => prev + 1);
@@ -157,149 +166,289 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
   }, [isVisible, isTransitioning, scrollAttempts]);
 
   return (
-    <motion.section 
-      className={`fixed inset-0 w-full h-screen z-40 transition-transform duration-500 ease-in-out ${
-        isVisible ? 'translate-y-0' : '-translate-y-full'
-      }`}
-      initial={{ y: 0 }}
-      animate={{ y: isVisible ? 0 : '-100%' }}
-      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-    >
-      <div className="flex flex-col h-screen">
-        {/* Main Content Area */}
-        <div className="flex-1 grid lg:grid-cols-2 min-h-0">
-          {/* Left Side - Content */}
+    <>
+      {/* Desktop Hero - Fixed Overlay */}
+      <motion.section 
+        className={`hidden lg:block fixed inset-0 w-full h-screen z-40 transition-transform duration-500 ease-in-out ${
+          isVisible ? 'translate-y-0' : '-translate-y-full'
+        }`}
+        initial={{ y: 0 }}
+        animate={{ y: isVisible ? 0 : '-100%' }}
+        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+      >
+        <div className="flex flex-col h-screen">
+          {/* Main Content Area */}
+          <div className="flex-1 grid lg:grid-cols-2 min-h-0">
+            {/* Left Side - Content */}
+            <motion.div 
+              className="bg-[#1A2A44] flex items-center justify-center px-6 lg:px-12 py-8"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="max-w-lg text-white">
+                <motion.h1 
+                  className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 lg:mb-6 leading-tight"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                  Study Abroad<br />
+                  Made Easy
+                </motion.h1>
+                <motion.p 
+                  className="text-base lg:text-lg xl:text-xl text-white/90 mb-6 lg:mb-8 leading-relaxed"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                >
+                  Navigate the complex world of visa applications with confidence. Our experienced consultants provide personalized guidance for study visas, tourist visas, and professional courses.
+                </motion.p>
+                <motion.button
+                  onClick={() => openWhatsAppChat(WHATSAPP_MESSAGES.consultation)}
+                  className="px-6 lg:px-8 py-3 lg:py-4 bg-[#FF4500] text-white font-semibold rounded-lg hover:bg-[#FF4500]/90 transform hover:scale-105 transition-all duration-300 shadow-lg text-base lg:text-lg cursor-pointer relative z-50"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  style={{ pointerEvents: 'auto' }}
+                >
+                  Schedule Free Consultation
+                </motion.button>
+                <motion.p 
+                  className="text-white/80 text-sm mt-3"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1 }}
+                >
+                  Or use the contact form below to send us an email
+                </motion.p>
+              </div>
+            </motion.div>
+
+            {/* Right Side - Image */}
+            <motion.div 
+              className="relative bg-gradient-to-br from-[#1A2A44] via-[#2A3A54] to-[#1A2A44] overflow-hidden flex"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <motion.img
+                src={"src/assets/images/hero.jpg"}
+                alt="Happy student with books"
+                className="w-full h-full object-cover object-center mt-15"
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 1.2, delay: 0.5 }}
+              />
+            </motion.div>
+          </div>
+
+          {/* Bottom Service Cards */}
           <motion.div 
-            className="bg-[#1A2A44] flex items-center justify-center px-6 lg:px-12 py-8"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            className="bg-white shadow-lg flex-shrink-0"
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1 }}
           >
-            <div className="max-w-lg text-white">
-              <motion.h1 
-                className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 lg:mb-6 leading-tight"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                Study Abroad<br />
-                Made Easy
-              </motion.h1>
-              <motion.p 
-                className="text-base lg:text-lg xl:text-xl text-white/90 mb-6 lg:mb-8 leading-relaxed"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                Navigate the complex world of visa applications with confidence. Our experienced consultants provide personalized guidance for study visas, tourist visas, and professional courses.
-              </motion.p>
-              <motion.button
-                onClick={() => openWhatsAppChat(WHATSAPP_MESSAGES.consultation)}
-                className="px-6 lg:px-8 py-3 lg:py-4 bg-[#FF4500] text-white font-semibold rounded-lg hover:bg-[#FF4500]/90 transform hover:scale-105 transition-all duration-300 shadow-lg text-base lg:text-lg cursor-pointer"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Schedule Free Consultation
-              </motion.button>
-              <motion.p 
-                className="text-white/80 text-sm mt-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 }}
-              >
-                Or use the contact form below to send us an email
-              </motion.p>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-6">
+              <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
+                {/* Study Visa Card */}
+                <motion.div 
+                  className="flex items-center space-x-3 lg:space-x-4 p-3 lg:p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 cursor-pointer"
+                  onClick={() => onViewServices()}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-[#1A2A44] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <GraduationCap className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-gray-900 mb-1 text-sm lg:text-base">Study Visa</h3>
+                    <p className="text-xs lg:text-sm text-gray-600 leading-tight">Complete visa assistance and university selection for your study abroad journey.</p>
+                  </div>
+                </motion.div>
+
+                {/* Tourist Visa Card */}
+                <motion.div 
+                  className="flex items-center space-x-3 lg:space-x-4 p-3 lg:p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 cursor-pointer"
+                  onClick={() => onViewServices()}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 1.4 }}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-[#FF4500] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Plane className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-gray-900 mb-1 text-sm lg:text-base">Tourist Visa</h3>
+                    <p className="text-xs lg:text-sm text-gray-600 leading-tight">Fast track tourist visa applications for your vacation and leisure travel.</p>
+                  </div>
+                </motion.div>
+
+                {/* PR Pathways Card */}
+                <motion.div 
+                  className="flex items-center space-x-3 lg:space-x-4 p-3 lg:p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 cursor-pointer"
+                  onClick={() => onViewServices()}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 1.6 }}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-[#1A2A44] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <FileText className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-gray-900 mb-1 text-sm lg:text-base">PR Pathways</h3>
+                    <p className="text-xs lg:text-sm text-gray-600 leading-tight">Comprehensive guidance for permanent residency and immigration options.</p>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
+        </div>
+      </motion.section>
 
-          {/* Right Side - Image */}
-          <motion.div 
-            className="relative bg-gradient-to-br from-[#1A2A44] via-[#2A3A54] to-[#1A2A44] overflow-hidden flex"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <motion.img
-              src={"src/assets/images/hero.jpg"}
-              alt="Happy student with books"
-              className="w-full h-full object-cover object-center mt-15"
-              initial={{ scale: 1.1 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1.2, delay: 0.5 }}
-            />
-          </motion.div>
+      {/* Mobile Hero - Normal DOM Flow */}
+      <motion.section 
+        className="lg:hidden relative w-full bg-gradient-to-br from-[#1A2A44] via-[#2A3A54] to-[#1A2A44] py-12"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 border border-white/20 rounded-full" />
+          <div className="absolute bottom-10 right-10 w-24 h-24 border border-white/20 rounded-full" />
         </div>
 
-        {/* Bottom Service Cards */}
+        <div className="relative z-10 px-4 sm:px-6">
+          {/* Hero Image */}
+          <motion.div 
+            className="mb-8 rounded-2xl overflow-hidden shadow-2xl"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <img
+              src={"src/assets/images/hero.jpg"}
+              alt="Happy student with books"
+              className="w-full h-64 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1A2A44]/50 to-transparent" />
+          </motion.div>
+
+          {/* Content */}
+          <div className="text-center text-white">
+            <motion.h1 
+              className="text-3xl font-bold mb-4 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Study Abroad<br />
+              Made Easy
+            </motion.h1>
+            <motion.p 
+              className="text-white/90 mb-6 leading-relaxed px-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              Navigate the complex world of visa applications with confidence. Our experienced consultants provide personalized guidance.
+            </motion.p>
+            <motion.button
+              onClick={() => openWhatsAppChat(WHATSAPP_MESSAGES.consultation)}
+              className="px-6 py-3 bg-[#FF4500] text-white font-semibold rounded-lg hover:bg-[#FF4500]/90 transform hover:scale-105 transition-all duration-300 shadow-lg cursor-pointer relative z-50"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{ pointerEvents: 'auto' }}
+            >
+              Schedule Free Consultation
+            </motion.button>
+            <motion.p 
+              className="text-white/80 text-sm mt-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+            >
+              Or use the contact form below to send us an email
+            </motion.p>
+          </div>
+        </div>
+
+        {/* Mobile Service Cards */}
         <motion.div 
-          className="bg-white shadow-lg flex-shrink-0"
-          initial={{ y: 100, opacity: 0 }}
+          className="mt-8 px-4"
+          initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-6">
-            <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
-              {/* Study Visa Card */}
-              <motion.div 
-                className="flex items-center space-x-3 lg:space-x-4 p-3 lg:p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 cursor-pointer"
-                onClick={() => onViewServices()}
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.2 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-[#1A2A44] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <GraduationCap className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-semibold text-gray-900 mb-1 text-sm lg:text-base">Study Visa</h3>
-                  <p className="text-xs lg:text-sm text-gray-600 leading-tight">Complete visa assistance and university selection for your study abroad journey.</p>
-                </div>
-              </motion.div>
+          <div className="grid gap-4">
+            {/* Study Visa Card */}
+            <motion.div 
+              className="flex items-center space-x-4 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 cursor-pointer"
+              onClick={() => onViewServices()}
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+            >
+              <div className="w-12 h-12 bg-[#1A2A44] rounded-lg flex items-center justify-center flex-shrink-0">
+                <GraduationCap className="h-6 w-6 text-white" />
+              </div>
+              <div className="text-white">
+                <h3 className="font-semibold mb-1">Study Visa</h3>
+                <p className="text-sm text-white/80">Complete visa assistance and university selection</p>
+              </div>
+            </motion.div>
 
-              {/* Tourist Visa Card */}
-              <motion.div 
-                className="flex items-center space-x-3 lg:space-x-4 p-3 lg:p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 cursor-pointer"
-                onClick={() => onViewServices()}
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.4 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-[#FF4500] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Plane className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-semibold text-gray-900 mb-1 text-sm lg:text-base">Tourist Visa</h3>
-                  <p className="text-xs lg:text-sm text-gray-600 leading-tight">Fast track tourist visa applications for your vacation and leisure travel.</p>
-                </div>
-              </motion.div>
+            {/* Tourist Visa Card */}
+            <motion.div 
+              className="flex items-center space-x-4 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 cursor-pointer"
+              onClick={() => onViewServices()}
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+            >
+              <div className="w-12 h-12 bg-[#FF4500] rounded-lg flex items-center justify-center flex-shrink-0">
+                <Plane className="h-6 w-6 text-white" />
+              </div>
+              <div className="text-white">
+                <h3 className="font-semibold mb-1">Tourist Visa</h3>
+                <p className="text-sm text-white/80">Fast track tourist visa applications</p>
+              </div>
+            </motion.div>
 
-              {/* PR Pathways Card */}
-              <motion.div 
-                className="flex items-center space-x-3 lg:space-x-4 p-3 lg:p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 cursor-pointer"
-                onClick={() => onViewServices()}
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.6 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-[#1A2A44] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <FileText className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-semibold text-gray-900 mb-1 text-sm lg:text-base">PR Pathways</h3>
-                  <p className="text-xs lg:text-sm text-gray-600 leading-tight">Comprehensive guidance for permanent residency and immigration options.</p>
-                </div>
-              </motion.div>
-            </div>
+            {/* PR Pathways Card */}
+            <motion.div 
+              className="flex items-center space-x-4 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 cursor-pointer"
+              onClick={() => onViewServices()}
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.6 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+            >
+              <div className="w-12 h-12 bg-[#1A2A44] rounded-lg flex items-center justify-center flex-shrink-0">
+                <FileText className="h-6 w-6 text-white" />
+              </div>
+              <div className="text-white">
+                <h3 className="font-semibold mb-1">PR Pathways</h3>
+                <p className="text-sm text-white/80">Comprehensive guidance for permanent residency</p>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
-      </div>
-    </motion.section>
+      </motion.section>
+    </>
   );
 };
 
