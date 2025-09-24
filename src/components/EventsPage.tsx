@@ -117,15 +117,6 @@ const EventsPage: React.FC = () => {
                     alt={item.title}
                     className="w-full h-full object-cover"
                   />
-                  {isVideo(item.image) && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 bg-black/50 rounded-full flex items-center justify-center">
-                        <Play className="h-6 w-6 text-white ml-1" />
-                      </div>
-                    </div>
-                  )}
-                  {/* Hover glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#FF4500]/0 via-transparent to-transparent group-hover:from-[#FF4500]/20 transition-all duration-500 pointer-events-none" />
                   <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#FF4500] group-hover:shadow-[0_0_20px_rgba(255,69,0,0.5)] transition-all duration-500 rounded-xl" />
                 </motion.div>
               ))}
@@ -143,20 +134,28 @@ const EventsPage: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.1 * index }}
                   whileHover={{ y: -10, scale: 1.02 }}
-                  onClick={() => setSelectedImage(item)}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-auto object-cover"
-                  />
-                  {isVideo(item.image) && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-black/50 rounded-full flex items-center justify-center">
-                        <Play className="h-8 w-8 text-white ml-1" />
-                      </div>
-                    </div>
-                  )}
+                  <div className="relative">
+                    {isVideo(item.image) ? (
+                      <video
+                        src={item.image}
+                        className="w-full h-auto object-cover"
+                        muted
+                        preload="metadata"
+                        poster={item.image.replace('.mp4', '_thumbnail.jpg')}
+                        onLoadedMetadata={(e) => {
+                          // Set current time to get a frame as thumbnail
+                          const video = e.target as HTMLVideoElement;
+                          video.currentTime = 1;
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-auto object-cover"
+                      />
+                    )}
+                  </div>
                   {/* Hover glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#FF4500]/0 via-transparent to-transparent group-hover:from-[#FF4500]/20 transition-all duration-500 pointer-events-none" />
                   <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#FF4500] group-hover:shadow-[0_0_20px_rgba(255,69,0,0.5)] transition-all duration-500 rounded-2xl" />
