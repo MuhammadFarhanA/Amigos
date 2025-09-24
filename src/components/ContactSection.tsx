@@ -197,73 +197,101 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onContactPage }) => {
               Quick Inquiry
             </motion.h3>
             <form className="space-y-4" onSubmit={handleFormSubmit}>
-              {[
-                { type: "text", placeholder: "First Name", delay: 0.5 },
-                { type: "text", placeholder: "Last Name", delay: 0.5 },
-                { type: "email", placeholder: "Email Address", delay: 0.6, fullWidth: true },
-                { type: "tel", placeholder: "Phone Number", delay: 0.7, fullWidth: true },
-                { type: "select", placeholder: "Select Service", delay: 0.8, fullWidth: true },
-                { type: "textarea", placeholder: "Your Message", delay: 0.9, fullWidth: true }
-              ].map((field, index) => (
-                <motion.div
-                  key={index}
-                  className={field.fullWidth ? "" : "grid grid-cols-1 md:grid-cols-2 gap-4"}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: field.delay }}
-                  viewport={{ once: true }}
+              {/* Name Fields */}
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <motion.input
+                  type="text"
+                  placeholder="First Name"
+                  name="firstName"
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A44] focus:border-[#1A2A44] transition-colors duration-200 text-sm md:text-base cursor-text"
+                  whileFocus={{ scale: 1.02 }}
+                />
+                <motion.input
+                  type="text"
+                  placeholder="Last Name"
+                  name="lastName"
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A44] focus:border-[#1A2A44] transition-colors duration-200 text-sm md:text-base cursor-text"
+                  whileFocus={{ scale: 1.02 }}
+                />
+              </motion.div>
+
+              {/* Email Field */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <motion.input
+                  type="email"
+                  placeholder="Email Address"
+                  name="email"
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A44] focus:border-[#1A2A44] transition-colors duration-200 text-sm md:text-base cursor-text"
+                  whileFocus={{ scale: 1.02 }}
+                />
+              </motion.div>
+
+              {/* Phone Field */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                viewport={{ once: true }}
+              >
+                <motion.input
+                  type="tel"
+                  placeholder="Phone Number"
+                  name="phone"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A44] focus:border-[#1A2A44] transition-colors duration-200 text-sm md:text-base cursor-text"
+                  whileFocus={{ scale: 1.02 }}
+                />
+              </motion.div>
+
+              {/* Service Selection */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <motion.select 
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A44] focus:border-[#1A2A44] transition-colors duration-200 text-sm md:text-base cursor-pointer"
+                  name="service"
+                  whileFocus={{ scale: 1.02 }}
                 >
-                  {field.type === "select" ? (
-                    <motion.select 
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A44] focus:border-[#1A2A44] transition-colors duration-200 text-sm md:text-base cursor-pointer"
-                      name="service"
-                      whileFocus={{ scale: 1.02 }}
-                    >
-                      <option value="">Select a service</option>
-                      <option value="study-visa">Study Visa</option>
-                      <option value="tourist-visa">Tourist Visa</option>
-                      <option value="professional-courses">Professional Courses</option>
-                    </motion.select>
-                  ) : field.type === "textarea" ? (
-                    <motion.textarea
-                      rows={4}
-                      placeholder={field.placeholder}
-                      name="message"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A44] focus:border-[#1A2A44] transition-colors duration-200 text-sm md:text-base cursor-text"
-                      whileFocus={{ scale: 1.02 }}
-                    />
-                  ) : field.fullWidth ? (
-                    <motion.input
-                      type={field.type}
-                      placeholder={field.placeholder}
-                      name={field.type === "email" ? "email" : "phone"}
-                      required={field.type === "email"}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A44] focus:border-[#1A2A44] transition-colors duration-200 text-sm md:text-base cursor-text"
-                      whileFocus={{ scale: 1.02 }}
-                    />
-                  ) : (
-                    <>
-                      <motion.input
-                        type="text"
-                        placeholder="First Name"
-                        name="firstName"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A44] focus:border-[#1A2A44] transition-colors duration-200 text-sm md:text-base cursor-text"
-                        whileFocus={{ scale: 1.02 }}
-                      />
-                      <motion.input
-                        type="text"
-                        placeholder="Last Name"
-                        name="lastName"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A44] focus:border-[#1A2A44] transition-colors duration-200 text-sm md:text-base cursor-text"
-                        whileFocus={{ scale: 1.02 }}
-                      />
-                    </>
-                  )}
-                </motion.div>
-              ))}
+                  <option value="">Select a service</option>
+                  <option value="study-visa">Study Visa</option>
+                  <option value="tourist-visa">Tourist Visa</option>
+                  <option value="professional-courses">Professional Courses</option>
+                </motion.select>
+              </motion.div>
+
+              {/* Message Field */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.9 }}
+                viewport={{ once: true }}
+              >
+                <motion.textarea
+                  rows={4}
+                  placeholder="Your Message"
+                  name="message"
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A2A44] focus:border-[#1A2A44] transition-colors duration-200 text-sm md:text-base cursor-text"
+                  whileFocus={{ scale: 1.02 }}
+                />
+              </motion.div>
+
               <motion.button
                 type="submit"
                 className="w-full px-6 py-3 bg-[#FF4500] text-white font-semibold rounded-lg hover:bg-[#FF4500]/90 transition-colors duration-300 text-sm md:text-base cursor-pointer"
