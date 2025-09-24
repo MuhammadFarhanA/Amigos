@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Camera, ArrowRight, Calendar, Users } from 'lucide-react';
+import { Camera, ArrowRight } from 'lucide-react';
 import eventsData from '../data/events.json';
 
 interface EventsPreviewSectionProps {
@@ -10,6 +10,10 @@ interface EventsPreviewSectionProps {
 const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChange }) => {
   // Get the first two events for preview
   const featuredEvents = eventsData.gallery.slice(0, 2);
+
+  const isVideo = (url: string) => {
+    return url.includes('video') || url.includes('.mp4') || url.includes('.webm') || url.includes('.mov');
+  };
 
   return (
     <motion.section 
@@ -24,8 +28,6 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
         <div className="absolute top-10 left-10 w-32 h-32 border border-white/20 rounded-full" />
         <div className="absolute bottom-10 right-10 w-24 h-24 border border-white/20 rounded-full" />
         <div className="absolute top-1/2 left-1/2 w-40 h-40 border border-white/10 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute top-20 right-20 w-16 h-16 border border-white/10 rounded-full" />
-        <div className="absolute bottom-32 left-20 w-20 h-20 border border-white/10 rounded-full" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -46,7 +48,7 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
               viewport={{ once: true }}
             >
               <Camera className="h-5 w-5 text-[#FF4500] mr-2" />
-              <span className="text-[#FF4500] font-semibold">Events & Gallery</span>
+              <span className="text-[#FF4500] font-semibold">Gallery</span>
             </motion.div>
 
             <motion.h2 
@@ -56,7 +58,7 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              Celebrating Success Stories
+              Events & Memories
             </motion.h2>
 
             <motion.p 
@@ -66,39 +68,15 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
               transition={{ duration: 0.8, delay: 0.5 }}
               viewport={{ once: true }}
             >
-              From workshops and seminars to celebrations and success stories - explore our vibrant community of students achieving their dreams.
+              Explore our vibrant community through workshops, seminars, celebrations, and success stories captured in moments.
             </motion.p>
-
-            {/* Stats */}
-            <motion.div 
-              className="grid grid-cols-2 gap-6 mb-8"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              viewport={{ once: true }}
-            >
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="flex items-center mb-2">
-                  <Calendar className="h-5 w-5 text-[#FF4500] mr-2" />
-                  <span className="text-2xl font-bold text-white">50+</span>
-                </div>
-                <p className="text-white/80 text-sm">Events Hosted</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="flex items-center mb-2">
-                  <Users className="h-5 w-5 text-[#FF4500] mr-2" />
-                  <span className="text-2xl font-bold text-white">1000+</span>
-                </div>
-                <p className="text-white/80 text-sm">Students Engaged</p>
-              </div>
-            </motion.div>
 
             <motion.button
               onClick={() => onPageChange('events')}
               className="group px-8 py-4 bg-gradient-to-r from-[#FF4500] to-[#FF6B35] text-white font-semibold rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 flex items-center space-x-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
               viewport={{ once: true }}
               whileHover={{ 
                 scale: 1.05,
@@ -106,7 +84,7 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
               }}
               whileTap={{ scale: 0.95 }}
             >
-              <span>View All Events</span>
+              <span>View Full Gallery</span>
               <motion.div
                 className="group-hover:translate-x-1 transition-transform duration-300"
                 animate={{ x: [0, 5, 0] }}
@@ -136,11 +114,25 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
                 >
-                  <img
-                    src={featuredEvents[0].image}
-                    alt={featuredEvents[0].title}
-                    className="w-full h-80 object-cover"
-                  />
+                  {isVideo(featuredEvents[0].image) ? (
+                    <video
+                      src={featuredEvents[0].image}
+                      className="w-full h-80 object-cover"
+                      muted
+                      preload="metadata"
+                      poster={featuredEvents[0].image.replace('.mp4', '_thumbnail.jpg')}
+                      onLoadedMetadata={(e) => {
+                        const video = e.target as HTMLVideoElement;
+                        video.currentTime = 1;
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src={featuredEvents[0].image}
+                      alt={featuredEvents[0].title}
+                      className="w-full h-80 object-cover"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">
                     <div className="bg-[#FF4500]/90 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm font-medium mb-3 inline-block">
@@ -162,11 +154,25 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05, rotate: 0, transition: { duration: 0.3 } }}
                 >
-                  <img
-                    src={featuredEvents[1].image}
-                    alt={featuredEvents[1].title}
-                    className="w-full h-full object-cover"
-                  />
+                  {isVideo(featuredEvents[1].image) ? (
+                    <video
+                      src={featuredEvents[1].image}
+                      className="w-full h-full object-cover"
+                      muted
+                      preload="metadata"
+                      poster={featuredEvents[1].image.replace('.mp4', '_thumbnail.jpg')}
+                      onLoadedMetadata={(e) => {
+                        const video = e.target as HTMLVideoElement;
+                        video.currentTime = 1;
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src={featuredEvents[1].image}
+                      alt={featuredEvents[1].title}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute bottom-2 left-2 right-2">
                     <div className="bg-[#1A2A44]/90 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-medium mb-1 inline-block">
@@ -177,7 +183,7 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
                 </motion.div>
               )}
 
-              {/* Floating Elements */}
+              {/* Floating Camera Icon */}
               <motion.div 
                 className="absolute -top-4 -left-4 w-16 h-16 bg-[#FF4500]/20 backdrop-blur-sm rounded-full flex items-center justify-center"
                 initial={{ opacity: 0, scale: 0 }}
@@ -195,26 +201,6 @@ const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChang
                 }}
               >
                 <Camera className="h-8 w-8 text-[#FF4500]" />
-              </motion.div>
-
-              <motion.div 
-                className="absolute top-8 -right-6 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center"
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1.2 }}
-                viewport={{ once: true }}
-                animate={{ 
-                  y: [0, 8, 0],
-                  rotate: [0, -5, 0]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-              >
-                <Users className="h-6 w-6 text-white" />
               </motion.div>
             </div>
           </motion.div>
