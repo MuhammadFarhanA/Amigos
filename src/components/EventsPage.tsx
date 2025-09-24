@@ -134,6 +134,8 @@ const EventsPage: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.1 * index }}
                   whileHover={{ y: -10, scale: 1.02 }}
+                  onClick={() => setSelectedImage(item)}
+                >
                   <div className="relative">
                     {isVideo(item.image) ? (
                       <video
