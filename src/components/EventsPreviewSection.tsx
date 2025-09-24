@@ -1,307 +1,226 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Camera, X, Play } from 'lucide-react';
+import { Camera, ArrowRight, Calendar, Users } from 'lucide-react';
 import eventsData from '../data/events.json';
-import { openWhatsAppChat, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
-const EventsPreviewSection: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedImage, setSelectedImage] = useState<any>(null);
+interface EventsPreviewSectionProps {
+  onPageChange: (page: string) => void;
+}
 
-  const categories = [
-    'all',
-    'Events',
-    'Workshops',
-    'Celebrations',
-    'Seminars',
-    'Webinars',
-    'Team',
-    'Office',
-  ];
-
-  const filteredGallery =
-    selectedCategory === 'all'
-      ? eventsData.gallery
-      : eventsData.gallery.filter((item) => item.category === selectedCategory);
-
-  const isVideo = (url: string) => {
-    return url.includes('.mp4') || url.includes('.webm') || url.includes('.mov') || url.includes('.avi') || url.includes('.mkv') || url.includes('.m4v');
-  };
-
-  const closeOverlay = () => {
-    setSelectedImage(null);
-  };
+const EventsPreviewSection: React.FC<EventsPreviewSectionProps> = ({ onPageChange }) => {
+  // Get the first two events for preview
+  const featuredEvents = eventsData.gallery.slice(0, 2);
 
   return (
-    <motion.div
-      className="min-h-screen bg-white"
+    <motion.section 
+      className="py-16 md:py-20 bg-gradient-to-br from-[#1A2A44] via-[#2A3A54] to-[#1A2A44] relative overflow-hidden"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true, margin: "-100px" }}
     >
-      {/* Hero Section */}
-      <motion.div
-        className="bg-gradient-to-br from-[#1A2A44] via-[#2A3A54] to-[#1A2A44] py-16 relative overflow-hidden"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-32 h-32 border border-white/20 rounded-full" />
-          <div className="absolute bottom-10 right-10 w-24 h-24 border border-white/20 rounded-full" />
-          <div className="absolute top-1/2 left-1/2 w-40 h-40 border border-white/10 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
-        </div>
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 left-10 w-32 h-32 border border-white/20 rounded-full" />
+        <div className="absolute bottom-10 right-10 w-24 h-24 border border-white/20 rounded-full" />
+        <div className="absolute top-1/2 left-1/2 w-40 h-40 border border-white/10 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-20 right-20 w-16 h-16 border border-white/10 rounded-full" />
+        <div className="absolute bottom-32 left-20 w-20 h-20 border border-white/10 rounded-full" />
+      </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <motion.div
-            className="mb-6"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="inline-flex p-4 bg-[#FF4500] rounded-full">
-              <Camera className="h-12 w-12 text-white" />
-            </div>
-          </motion.div>
-          <motion.h1
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            {eventsData.title}
-          </motion.h1>
-          <motion.p
-            className="text-xl text-white/90 mb-4 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            {eventsData.subtitle}
-          </motion.p>
-          <motion.p
-            className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            {eventsData.description}
-          </motion.p>
-        </div>
-      </motion.div>
-
-      {/* Gallery */}
-      <motion.section
-        className="py-16 bg-gray-50"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Mobile Layout - Simple Grid */}
-          <div className="block md:hidden">
-            <div className="grid grid-cols-2 gap-4">
-              {filteredGallery.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.05 * index }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  onClick={() => setSelectedImage(item)}
-                >
-                  {isVideo(item.image) ? (
-                    <video
-                      src={item.image}
-                      className="w-full h-full object-cover"
-                      muted
-                      preload="metadata"
-                    />
-                  ) : (
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                    />
-                  )}
-                  {isVideo(item.image) && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 bg-black/50 rounded-full flex items-center justify-center">
-                        <Play className="h-6 w-6 text-white ml-1" />
-                      </div>
-                    </div>
-                  )}
-                  {/* Hover glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#FF4500]/0 via-transparent to-transparent group-hover:from-[#FF4500]/20 transition-all duration-500 pointer-events-none" />
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#FF4500] group-hover:shadow-[0_0_20px_rgba(255,69,0,0.5)] transition-all duration-500 rounded-xl" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Desktop Layout - Column-based Masonry */}
-          <div className="hidden md:block">
-            <div className="columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
-              {filteredGallery.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 break-inside-avoid mb-6 cursor-pointer"
-                  initial={{ opacity: 0, y: 100 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.1 * index }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  onClick={() => setSelectedImage(item)}
-                >
-                  {isVideo(item.image) ? (
-                    <video
-                      src={item.image}
-                      className="w-full h-auto object-cover"
-                      muted
-                      preload="metadata"
-                    />
-                  ) : (
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-auto object-cover"
-                    />
-                  )}
-                  {isVideo(item.image) && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-black/50 rounded-full flex items-center justify-center">
-                        <Play className="h-8 w-8 text-white ml-1" />
-                      </div>
-                    </div>
-                  )}
-                  {/* Hover glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#FF4500]/0 via-transparent to-transparent group-hover:from-[#FF4500]/20 transition-all duration-500 pointer-events-none" />
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#FF4500] group-hover:shadow-[0_0_20px_rgba(255,69,0,0.5)] transition-all duration-500 rounded-2xl" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Full Page Overlay */}
-      {selectedImage && (
-        <motion.div
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={closeOverlay}
-        >
-          {/* Close Button */}
-          <motion.button
-            onClick={closeOverlay}
-            className="absolute top-4 right-4 z-60 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors duration-300"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <X className="h-6 w-6" />
-          </motion.button>
-
-          {/* Image/Video Container */}
-          <motion.div
-            className="relative max-w-7xl max-h-full w-full h-full flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1 }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {isVideo(selectedImage.image) ? (
-              <video
-                src={selectedImage.image}
-                controls
-                autoPlay
-                muted
-                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-              />
-            ) : (
-              <img
-                src={selectedImage.image}
-                alt={selectedImage.title}
-                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-              />
-            )}
-
-            {/* Image Info */}
-            <motion.div
-              className="absolute bottom-4 left-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg p-4 text-white"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <h3 className="text-lg md:text-xl font-bold mb-2">{selectedImage.title}</h3>
-              <div className="flex items-center justify-between text-sm">
-                <span className="bg-white/20 px-3 py-1 rounded-full">{selectedImage.category}</span>
-                <span>{new Date(selectedImage.date).toLocaleDateString()}</span>
-              </div>
-              {selectedImage.description && (
-                <p className="text-sm mt-2 text-white/90">{selectedImage.description}</p>
-              )}
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      )}
-
-      {/* CTA Section */}
-      <motion.section
-        className="py-16 bg-gradient-to-br from-[#1A2A44] via-[#2A3A54] to-[#1A2A44] relative overflow-hidden"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-32 h-32 border border-white/20 rounded-full" />
-          <div className="absolute bottom-10 right-10 w-24 h-24 border border-white/20 rounded-full" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 border border-white/10 rounded-full" />
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side - Content */}
+          <motion.div 
+            className="text-white"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Join Our Community
-          </motion.h2>
-          <motion.p
-            className="text-xl text-white/90 mb-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Connect with our community of students and education enthusiasts.
-          </motion.p>
-          <motion.button
-            onClick={() => openWhatsAppChat(WHATSAPP_MESSAGES.general)}
-            className="px-8 py-4 bg-gradient-to-r from-[#FF4500] to-[#FF6B35] text-white font-semibold rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 text-lg"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            <motion.div 
+              className="inline-flex items-center px-4 py-2 bg-[#FF4500]/20 backdrop-blur-sm rounded-full mb-6"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Camera className="h-5 w-5 text-[#FF4500] mr-2" />
+              <span className="text-[#FF4500] font-semibold">Events & Gallery</span>
+            </motion.div>
+
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              Celebrating Success Stories
+            </motion.h2>
+
+            <motion.p 
+              className="text-xl text-white/90 mb-8 leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
+              From workshops and seminars to celebrations and success stories - explore our vibrant community of students achieving their dreams.
+            </motion.p>
+
+            {/* Stats */}
+            <motion.div 
+              className="grid grid-cols-2 gap-6 mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              viewport={{ once: true }}
+            >
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                <div className="flex items-center mb-2">
+                  <Calendar className="h-5 w-5 text-[#FF4500] mr-2" />
+                  <span className="text-2xl font-bold text-white">50+</span>
+                </div>
+                <p className="text-white/80 text-sm">Events Hosted</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                <div className="flex items-center mb-2">
+                  <Users className="h-5 w-5 text-[#FF4500] mr-2" />
+                  <span className="text-2xl font-bold text-white">1000+</span>
+                </div>
+                <p className="text-white/80 text-sm">Students Engaged</p>
+              </div>
+            </motion.div>
+
+            <motion.button
+              onClick={() => onPageChange('events')}
+              className="group px-8 py-4 bg-gradient-to-r from-[#FF4500] to-[#FF6B35] text-white font-semibold rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 flex items-center space-x-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              viewport={{ once: true }}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 25px 50px rgba(255, 69, 0, 0.4)"
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span>View All Events</span>
+              <motion.div
+                className="group-hover:translate-x-1 transition-transform duration-300"
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <ArrowRight className="h-5 w-5" />
+              </motion.div>
+            </motion.button>
+          </motion.div>
+
+          {/* Right Side - Featured Images */}
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: '0 25px 50px rgba(255, 69, 0, 0.4)',
-            }}
-            whileTap={{ scale: 0.95 }}
           >
-            Connect with Us on WhatsApp
-          </motion.button>
+            <div className="relative">
+              {/* Main Featured Image */}
+              {featuredEvents[0] && (
+                <motion.div 
+                  className="relative rounded-2xl overflow-hidden shadow-2xl"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+                >
+                  <img
+                    src={featuredEvents[0].image}
+                    alt={featuredEvents[0].title}
+                    className="w-full h-80 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="bg-[#FF4500]/90 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm font-medium mb-3 inline-block">
+                      {featuredEvents[0].category}
+                    </div>
+                    <h3 className="text-white font-bold text-xl mb-2">{featuredEvents[0].title}</h3>
+                    <p className="text-white/90 text-sm">{featuredEvents[0].description}</p>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Secondary Featured Image */}
+              {featuredEvents[1] && (
+                <motion.div 
+                  className="absolute -bottom-8 -right-8 w-48 h-32 rounded-xl overflow-hidden shadow-xl border-4 border-white/20"
+                  initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: 5 }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05, rotate: 0, transition: { duration: 0.3 } }}
+                >
+                  <img
+                    src={featuredEvents[1].image}
+                    alt={featuredEvents[1].title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute bottom-2 left-2 right-2">
+                    <div className="bg-[#1A2A44]/90 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-medium mb-1 inline-block">
+                      {featuredEvents[1].category}
+                    </div>
+                    <h4 className="text-white font-semibold text-sm leading-tight">{featuredEvents[1].title}</h4>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Floating Elements */}
+              <motion.div 
+                className="absolute -top-4 -left-4 w-16 h-16 bg-[#FF4500]/20 backdrop-blur-sm rounded-full flex items-center justify-center"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 1 }}
+                viewport={{ once: true }}
+                animate={{ 
+                  y: [0, -10, 0],
+                  rotate: [0, 5, 0]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <Camera className="h-8 w-8 text-[#FF4500]" />
+              </motion.div>
+
+              <motion.div 
+                className="absolute top-8 -right-6 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+                viewport={{ once: true }}
+                animate={{ 
+                  y: [0, 8, 0],
+                  rotate: [0, -5, 0]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              >
+                <Users className="h-6 w-6 text-white" />
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
-      </motion.section>
-    </motion.div>
+      </div>
+    </motion.section>
   );
 };
 
