@@ -6,7 +6,7 @@ const EMAILJS_SERVICE_ID = 'service_m4euhbh'; // Your EmailJS service ID
 const EMAILJS_TEMPLATE_ID = 'template_363hdni'; // Your EmailJS template ID  
 const EMAILJS_PUBLIC_KEY = 'j24pfcz6Z2kk2ExR0'; // Your EmailJS public key
 
-export const AMIGOS_EMAIL = 'farhan45778@gmail.com';
+export const AMIGOS_EMAIL = 'info@amigosoverseaseducation.com';
 
 // Initialize EmailJS with public key
 emailjs.init(EMAILJS_PUBLIC_KEY);

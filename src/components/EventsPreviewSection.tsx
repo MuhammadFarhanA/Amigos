@@ -4,7 +4,7 @@ import { Camera, X, Play } from 'lucide-react';
 import eventsData from '../data/events.json';
 import { openWhatsAppChat, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
-const EventsPage: React.FC = () => {
+const EventsPreviewSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedImage, setSelectedImage] = useState<any>(null);
 
@@ -305,4 +305,4 @@ const EventsPage: React.FC = () => {
   );
 };
 
-export default EventsPage;
+export default EventsPreviewSection;
