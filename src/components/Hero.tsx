@@ -235,7 +235,7 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <motion.img
-                src={"src/assets/images/hero.jpg"}
+                src={"/images/hero.jpg"}
                 alt="Happy student with books"
                 className="w-full h-full object-cover object-center mt-15"
                 initial={{ scale: 1.1 }}
@@ -335,7 +335,7 @@ const Hero: React.FC<HeroProps> = ({ onGetConsultation, onViewServices }) => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <img
-              src={"src/assets/images/hero.jpg"}
+              src={"/images/hero.jpg"}
               alt="Happy student with books"
               className="w-full h-64 object-cover"
             />

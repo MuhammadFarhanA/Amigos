@@ -6,32 +6,32 @@
     {
       "name": "Dr. Muhammad Ali",
       "position": "Director Marketing",
-      "image": "src/assets/images/ali.png"
+      "image": "/images/ali.png"
     },
     {
       "name": "Zubair Hussain",
       "position": "HR Manager",
-      "image": "src/assets/images/zubair.jpg"
+      "image": "/images/zubair.jpg"
     },
     {
       "name": "Fahad Butt",
       "position": "CRM Developer",
-      "image": "src/assets/images/fahad.jpg"
+      "image": "/images/fahad.jpg"
     },
     {
       "name": "Muhammad Farhan Atif",
       "position": "Web Developer",
-      "image": "src/assets/images/farhan.jpg"
+      "image": "/images/farhan.jpg"
     },
     {
       "name": "Muhammad Asim",
       "position": "Finance Manager",
-      "image": "src/assets/images/asim.jpg"
+      "image": "/images/asim.jpg"
     },
     {
       "name": "Muhammad Faiq",
       "position": "Japanese Language Coach",
-      "image": "src/assets/images/faiq.jpg"
+      "image": "/images/faiq.jpg"
     }
   ]
 }

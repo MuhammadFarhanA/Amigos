@@ -37,7 +37,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
               onClick={() => onPageChange('home')}
               className="text-xl md:text-2xl font-bold text-white hover:text-[#FF4500] transition-colors duration-300 cursor-pointer"
             >
-              <img src={"src/assets/images/amigos-logo.png"} alt="" />
+              <img src={"/images/amigos-logo.png"} alt="" />
             </button>
           </div>
 

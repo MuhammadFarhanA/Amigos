@@ -6,7 +6,7 @@
     {
       "id": 1,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_14.mp4",
+      "image": "/images/event_14.mp4",
       "category": "Events",
       "date": "2024-10-31",
       "description": ""
@@ -14,7 +14,7 @@
     {
       "id": 2,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_2.jpg",
+      "image": "/images/event_2.jpg",
       "category": "Events",
       "date": "2024-11-01",
       "description": ""
@@ -22,7 +22,7 @@
     {
       "id": 3,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_4.jpg",
+      "image": "/images/event_4.jpg",
       "category": "Events",
       "date": "2024-11-02",
       "description": ""
@@ -30,7 +30,7 @@
     {
       "id": 4,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_5.jpg",
+      "image": "/images/event_5.jpg",
       "category": "Events",
       "date": "2024-10-31",
       "description": ""
@@ -38,7 +38,7 @@
     {
       "id": 5,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_7.jpg",
+      "image": "/images/event_7.jpg",
       "category": "Events",
       "date": "2024-11-01",
       "description": ""
@@ -46,7 +46,7 @@
     {
       "id": 6,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_8.jpg",
+      "image": "/images/event_8.jpg",
       "category": "Events",
       "date": "2024-11-02",
       "description": ""
@@ -54,7 +54,7 @@
     {
       "id": 7,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_10.jpg",
+      "image": "/images/event_10.jpg",
       "category": "Events",
       "date": "2024-10-31",
       "description": ""
@@ -62,7 +62,7 @@
     {
       "id": 8,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_12.mp4",
+      "image": "/images/event_12.mp4",
       "category": "Events",
       "date": "2024-11-01",
       "description": ""
@@ -70,7 +70,7 @@
     {
       "id": 9,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_9.jpg",
+      "image": "/images/event_9.jpg",
       "category": "Events",
       "date": "2024-11-02",
       "description": ""
@@ -78,7 +78,7 @@
     {
       "id": 10,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_1.jpg",
+      "image": "/images/event_1.jpg",
       "category": "Events",
       "date": "2024-10-31",
       "description": ""
@@ -86,7 +86,7 @@
     {
       "id": 11,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_3.jpg",
+      "image": "/images/event_3.jpg",
       "category": "Events",
       "date": "2024-11-01",
       "description": ""
@@ -94,7 +94,7 @@
     {
       "id": 12,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_6.jpg",
+      "image": "/images/event_6.jpg",
       "category": "Events",
       "date": "2024-11-02",
       "description": ""
@@ -102,7 +102,7 @@
     {
       "id": 13,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_11.jpg",
+      "image": "/images/event_11.jpg",
       "category": "Events",
       "date": "2024-10-31",
       "description": ""
@@ -110,7 +110,7 @@
     {
       "id": 14,
       "title": "CanttMUN LGS",
-      "image": "src/assets/images/event_13.mp4",
+      "image": "/images/event_13.mp4",
       "category": "Events",
       "date": "2024-11-01",
       "description": ""
