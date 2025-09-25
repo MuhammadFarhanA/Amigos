@@ -3,7 +3,7 @@ name: Build and Deploy React App to Hostinger
 on:
   push:
     branches:
-      - main   # deploy whenever you push to main
+      - main   # Deploy when pushing to main branch
 
 jobs:
   build-and-deploy:
@@ -25,7 +25,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to Hostinger via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.HOSTINGER_FTP_SERVER }}
           username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
