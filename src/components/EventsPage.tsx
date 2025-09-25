@@ -143,12 +143,8 @@ const EventsPage: React.FC = () => {
                         className="w-full h-auto object-cover"
                         muted
                         preload="metadata"
-                        poster={item.image.replace('.mp4', '_thumbnail.jpg')}
-                        onLoadedMetadata={(e) => {
-                          // Set current time to get a frame as thumbnail
-                          const video = e.target as HTMLVideoElement;
-                          video.currentTime = 1;
-                        }}
+                        poster={item.image.replace('.mp4', '_thumbnail.png')}
+                        
                       />
                     ) : (
                       <img
